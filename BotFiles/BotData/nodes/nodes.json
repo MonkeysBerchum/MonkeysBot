@@ -1,0 +1,783 @@
+{
+  "nodes": [
+    {
+      "type": "command",
+      "name": "kick",
+      "guid": "8b352645-83c2-4b05-8438-fcab65831460",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "b75a5a19-b7aa-4f0a-9331-a1783f7cd80d"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 1161,
+      "y": 384,
+      "perms": [
+        "mod",
+        "admin"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "get user kick",
+      "guid": "b75a5a19-b7aa-4f0a-9331-a1783f7cd80d",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "58fe332d-2262-4098-8e37-31dee1c24658"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "8b352645-83c2-4b05-8438-fcab65831460"
+        }
+      ],
+      "x": 1359,
+      "y": 375,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "getUserKick",
+        "User",
+        "temp"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "getReason",
+      "guid": "58fe332d-2262-4098-8e37-31dee1c24658",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "kickReason",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "f9bc4f90-d6a4-454b-8847-ac754e86ab9f"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "b75a5a19-b7aa-4f0a-9331-a1783f7cd80d"
+        }
+      ],
+      "x": 1534,
+      "y": 375,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "kickReason",
+        "Text",
+        "temp",
+        "0"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "kick user",
+      "guid": "f9bc4f90-d6a4-454b-8847-ac754e86ab9f",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "f7c91b4c-b739-432a-8a21-0d06fb55491d"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "58fe332d-2262-4098-8e37-31dee1c24658"
+        }
+      ],
+      "x": 1716,
+      "y": 379,
+      "rtype": "User Action",
+      "rsubtype": "Kick User",
+      "formdata": [
+        "${tempVars.getUserKick.id}",
+        "${tempVars.kickReason}"
+      ],
+      "formnames": [
+        "user",
+        "reason"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "kickConfirm",
+      "guid": "f7c91b4c-b739-432a-8a21-0d06fb55491d",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "f9bc4f90-d6a4-454b-8847-ac754e86ab9f"
+        }
+      ],
+      "x": 1912,
+      "y": 378,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "<#1138541457913954405>",
+        "User was kicked: ${tempVars.kickReason}",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "command",
+      "name": "help",
+      "guid": "d0105375-9dde-4291-b73d-fbc3af450cb1",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "217d9e07-c7ad-4eac-a96d-8d5cb15525a9"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 77,
+      "y": 103
+    },
+    {
+      "type": "command",
+      "name": "h",
+      "guid": "afa67c8d-f699-440a-b92c-790aaab71fcd",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "217d9e07-c7ad-4eac-a96d-8d5cb15525a9"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 73,
+      "y": 200,
+      "perms": []
+    },
+    {
+      "type": "response",
+      "name": "multiHelp",
+      "guid": "217d9e07-c7ad-4eac-a96d-8d5cb15525a9",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "4979b026-e1a8-40eb-b495-09d8035def85"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "d0105375-9dde-4291-b73d-fbc3af450cb1"
+        },
+        {
+          "label": "trigger",
+          "id": "afa67c8d-f699-440a-b92c-790aaab71fcd"
+        }
+      ],
+      "x": 269,
+      "y": 99,
+      "rtype": "Control",
+      "rsubtype": "Multiple Input",
+      "messageActionRows": []
+    },
+    {
+      "type": "command",
+      "name": "modhelp",
+      "guid": "aec5d463-4484-44e3-aa48-43a790ddac3d",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "55e83132-e095-4408-b727-ae75e7684d71"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 1127,
+      "y": 110,
+      "perms": [
+        "mod",
+        "admin"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "Live_notification",
+      "guid": "7b6acd49-2b87-4c1c-a399-ece3913d0cd5",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "335aef33-9ac6-41bb-b18f-2ffce8e16b24"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 1133,
+      "y": 229,
+      "perms": [
+        "admin",
+        "mod"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "buttonMessage",
+      "guid": "335aef33-9ac6-41bb-b18f-2ffce8e16b24",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "BenachrichtigungsButtonMessage",
+      "saveToVariableType": "server",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "7b6acd49-2b87-4c1c-a399-ece3913d0cd5"
+        }
+      ],
+      "x": 1351,
+      "y": 227,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "6441A5",
+        "Live Benachrichtigungen",
+        "https://www.twitch.tv/monkeysberchum",
+        "",
+        "",
+        "",
+        "Durch das Drücken der Knöpfe unten, könnt ihr aussuchen, ob iht in <#1138542284913254532> gepingt werden wollt, wenn der Stream live geht. ",
+        "",
+        "https://static-cdn.jtvnw.net/jtv_user_pictures/ed8f69c3-2c2f-4e6f-af09-e0a500f2c29c-profile_image-70x70.png",
+        "~MonkeysBerchum ",
+        "false",
+        "BenachrichtigungsButtonMessage",
+        "server"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [
+        {
+          "rowtype": "button",
+          "buttons": [
+            {
+              "label": "Bekomme Benachrichtigungen ",
+              "customid": "getLivePing",
+              "style": "SUCCESS",
+              "emoji": "",
+              "URL": "",
+              "ephemeral": false
+            },
+            {
+              "label": "Bekomme KEINE Benachichtigungen mehr ",
+              "customid": "loseLivePing",
+              "style": "DANGER",
+              "emoji": "",
+              "URL": "",
+              "ephemeral": false
+            }
+          ]
+        }
+      ],
+      "valueFields": []
+    },
+    {
+      "type": "command",
+      "name": "ban",
+      "guid": "86ac3094-afde-430e-a3fc-b36e8c97b814",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "127ccec9-801d-4c1a-aeb8-a73d4859678c"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 1160,
+      "y": 543
+    },
+    {
+      "type": "response",
+      "name": "get user ban",
+      "guid": "127ccec9-801d-4c1a-aeb8-a73d4859678c",
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "f786bd80-2975-4f7e-a333-26dd226710be"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "86ac3094-afde-430e-a3fc-b36e8c97b814"
+        }
+      ],
+      "x": 1373,
+      "y": 532,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "messageActionRows": []
+    },
+    {
+      "type": "response",
+      "name": "getReason_1",
+      "guid": "f786bd80-2975-4f7e-a333-26dd226710be",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "banReason",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "ba966ed0-6dec-425c-820a-3b4bd500a1f1"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "127ccec9-801d-4c1a-aeb8-a73d4859678c"
+        }
+      ],
+      "x": 1563,
+      "y": 531,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "banReason",
+        "Text",
+        "temp",
+        "0"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "ban user",
+      "guid": "ba966ed0-6dec-425c-820a-3b4bd500a1f1",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "ce6e1b36-3afd-4cfa-9ea9-9eb26473a139"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "f786bd80-2975-4f7e-a333-26dd226710be"
+        }
+      ],
+      "x": 1752,
+      "y": 529,
+      "rtype": "User Action",
+      "rsubtype": "Ban User",
+      "formdata": [
+        "${tempVars.getUserKick.id}",
+        "${tempVars.banReason}",
+        ""
+      ],
+      "formnames": [
+        "user",
+        "reason",
+        "days"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "banConfirm",
+      "guid": "ce6e1b36-3afd-4cfa-9ea9-9eb26473a139",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "ba966ed0-6dec-425c-820a-3b4bd500a1f1"
+        }
+      ],
+      "x": 1941,
+      "y": 515,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "<#1138541457913954405>",
+        "User was banned: ${tempVars.banReason}",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "modHelpList",
+      "guid": "55e83132-e095-4408-b727-ae75e7684d71",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "aec5d463-4484-44e3-aa48-43a790ddac3d"
+        }
+      ],
+      "x": 1345,
+      "y": 102,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}``",
+        "1CB96A",
+        "Liste der Mod-Commands",
+        "",
+        "",
+        "",
+        "",
+        "!kick @user \"REASON\" \n!ban @user \"REASON\"",
+        "",
+        "",
+        "~Luke",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "command",
+      "name": "twitch",
+      "guid": "3d67337f-82ed-422b-a7d3-5e996f2a1b01",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "b387879c-bacc-4d52-8da4-838c602a4243"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 75,
+      "y": 365
+    },
+    {
+      "type": "response",
+      "name": "twitchLink",
+      "guid": "b387879c-bacc-4d52-8da4-838c602a4243",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "3d67337f-82ed-422b-a7d3-5e996f2a1b01"
+        }
+      ],
+      "x": 285,
+      "y": 356,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "Schaue bei den MonkeysBerchum auf Twitch vorbei https://www.twitch.tv/monkeysberchum",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "helpList",
+      "guid": "4979b026-e1a8-40eb-b495-09d8035def85",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "217d9e07-c7ad-4eac-a96d-8d5cb15525a9"
+        }
+      ],
+      "x": 460,
+      "y": 129,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FFFFFF",
+        "Liste der Commands für alle user ",
+        "",
+        "",
+        "",
+        "",
+        "!twitch - sendet den Twitch-Link\n\nMehr Commands werden folgen. Falls Commands gewünscht werden, bitte \nunter der Hilfe-Kategore einen Beitrag erstellen. ",
+        "",
+        "",
+        "~MonkeysBot",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "command",
+      "name": "regelwerk",
+      "guid": "43863a3d-e364-4701-84ff-99c09fde0be9",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "22a862d6-cfe9-458f-a49c-76da5a39a39f"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 1151,
+      "y": 706,
+      "perms": [
+        "mod",
+        "admin"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "regelwerkPost",
+      "guid": "22a862d6-cfe9-458f-a49c-76da5a39a39f",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "43863a3d-e364-4701-84ff-99c09fde0be9"
+        }
+      ],
+      "x": 1367,
+      "y": 694,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "6B6B86",
+        "Regelwerk ",
+        "",
+        "",
+        "",
+        "",
+        "§1 Nutzernamen\n•\tKeine leeren Nutzernamen \n•\tKeine, generell, als unpassend angesehenen Nutzernamen \n•\tKeine sexuell angelente Nutzernamen \n•\tKeine beleidigenden Nutzernamen \n•\tKeine Nutzernamen mit unlesbarem Unicode \n\n§2 Profilbilder\n•\tKeine leeren Profilbilder \n•\tKeine, generell, als unpassend angesehenen Profilbilder \n•\tKeine sexuell angelente Profilbilder \n•\tKeine beleidigenden Profilbilder \n\n§3 Discord zusammenleben \n•\tKein Ausnutzen von Schlupflöchern in den Regeln (bitte den Mods/Admins melden)\n•\tKein DM’s an Servermitgliedern ohne deren Einverständnis senden\n•\tKeine Einladungen an Bots senden\n•\tDas Ausnutzen/Anwenden von Discord Bugs, Exploits, Glitches, Hacks, usw. führt zum sofortigen Ausschluss des Servers\no\tDas Melden von Personen ist unverzüglich durchzuführen\n\n§4.1 Textkanal Regeln \n•\tDas Pingen der Mods ist nur im dringenden Fällen gestattet. Ansonsten ist der Support-Kanal zu nutzen\n•\tDas Fragen nach Rollen ist untersagt (außer es handelt ich um eine Person, die diese Rolle durch einen Fehler nicht oder nicht mehr hat) \n•\tDas Nutzen von @everyone oder @here ist untersagt, außer die Mods/Admins haben die Erlaubnis erteilt\n•\tDas Spammen von @usern ist zu untersagen \n•\tDas Verbreiten von NSFW-Inhalten oder das Unterhalten über diese ist untersagt und führt bei Verletzung zum Serverausschluss \n•\tPhishing und der Versuch ist zu melden und führen zum Serverausschluss \n\n§4.2 Schreibverhalten\n•\tEs ist verboten, \no\tBeleidigungen\no\tBelästigung \no\tSexismus \no\tRassismus \no\tdas Verbreiten von Hassreden \no\tReligiöse Diskussionen \no\tPolitische Diskussionen\no\tDiskussionen über Sexualität \no\tTrolling \no\tSpamming \no\tCAPS LOCK \no\teine Sprache außer Deutsch und Englisch zum Chatten zu verwenden \no\t(Eigen-)Werbung ohne Erlaubnis \no\tKeine Links in Kanälen, welche nicht dafür vorgesehen sind \no\tBot-Commands in den nicht dafür vorgesehenen Kanälen \n\n§5 Voice-Chat Regeln \n•\tLaute, nervige oder hoch gepitchte Geräusche sind zu unterdrücken  \n•\tHintergrundgeräusche sind nach Möglichkeit zu unterdrücken \n\n§6 Bot Regeln\n•\tDas Spammen von Commands ist untersagt \n\n§7 Sonderrecht der Moderatoren (Mods)\n•\tDie Moderatoren behalten sich das Recht vor Nutzernamen zu ändern\n•\tModeratoren behalten sich das Recht vor, unabhängig von Regeln nach eigenem Ermessen zu handeln\n•\tDie Moderatoren behalten sich das Recht vor jegliche Nachricht zu löschen\n•\tDie Moderatoren behalten sich das Recht vor jegliche Nachricht zu bearbeiten \n•\tDie Moderatoren behalten sich das Recht vor Nutzer die Verbindung zum Voice-Kanal aufzuheben \n•\tDie Moderatoren behalten sich das Recht vor Nutzer zu verschieben, stumm zu schalten oder taub zu schalten \n•\tDie Regeln gelten auch für DM’s an Servermitglieder\n",
+        "",
+        "",
+        "~MonkeysBot",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [
+        {
+          "rowtype": "button",
+          "buttons": [
+            {
+              "label": "Regeln aktzeptieren ",
+              "customid": "acceptRules",
+              "style": "SUCCESS",
+              "emoji": "✅",
+              "URL": "",
+              "ephemeral": false
+            }
+          ]
+        }
+      ],
+      "valueFields": []
+    }
+  ]
+}

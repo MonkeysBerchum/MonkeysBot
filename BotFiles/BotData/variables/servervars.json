@@ -1,0 +1,69 @@
+[{
+  "1137052576139989024": "1"
+},{
+  "BenachrichtigungsButtonMessage": "2"
+},{
+  "channelId": "3",
+  "guildId": "4",
+  "deleted": false,
+  "id": "5",
+  "type": "6",
+  "system": false,
+  "content": "7",
+  "authorId": "8",
+  "pinned": false,
+  "tts": false,
+  "nonce": null,
+  "embeds": "9",
+  "components": "10",
+  "attachments": "11",
+  "stickers": "12",
+  "createdTimestamp": 1691516347018,
+  "editedTimestamp": null,
+  "webhookId": null,
+  "groupActivityApplicationId": null,
+  "applicationId": null,
+  "activity": null,
+  "flags": 0,
+  "reference": null,
+  "interaction": null,
+  "cleanContent": "7"
+},"1137061070482198548","1137052576139989024","1138526821361659904","DEFAULT","","1136904362417979484",[
+  "13"
+],[
+  "14"
+],[],[],{
+  "type": "15",
+  "title": "16",
+  "description": "17",
+  "url": "18",
+  "color": 6570405,
+  "timestamp": null,
+  "fields": "19",
+  "thumbnail": null,
+  "video": null,
+  "author": null,
+  "provider": null
+},{
+  "type": "20",
+  "components": "21"
+},"rich","Live Benachichtigungen","Durch das klicken des Knopfes unten, werdet ihr in <#1137063095081127976> gepingt.","https://www.twitch.tv/monkeysberchum",[],"ACTION_ROW",[
+  "22",
+  "23"
+],{
+  "type": "24",
+  "label": "25",
+  "customId": "26",
+  "style": "27",
+  "emoji": null,
+  "url": null,
+  "disabled": false
+},{
+  "type": "24",
+  "label": "28",
+  "customId": "29",
+  "style": "30",
+  "emoji": null,
+  "url": null,
+  "disabled": false
+},"BUTTON","Bekomme Benachrichtigungen","getLivePing","SUCCESS","Bekomme KEINE Benachichtigungen mehr","loseLivePing","DANGER"]
