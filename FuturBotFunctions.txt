@@ -20,3 +20,12 @@ send WebHook (like), if bot is called with '/' command
 when user joins dc
     -write Message in #welcome
     -write DM to user
+
+ticket-system
+    -create channel 
+        -if user has no open tickets
+    -make private
+    -give user permission
+    -send message 
+        -button to cloes
+    
