@@ -390,6 +390,15 @@
       ],
       "actions": [
         {
+          "name": "get user to time out",
+          "category": "Variable",
+          "type": "Get Mentioned User",
+          "messageActionRows": [],
+          "varname": "getUserTimeOut",
+          "vartype": "User",
+          "savevartype": "temp"
+        },
+        {
           "name": "timeout time",
           "category": "Variable",
           "type": "Store Value in Variable",
@@ -398,15 +407,6 @@
           "vartype": "Number",
           "savevartype": "temp",
           "param": "1"
-        },
-        {
-          "name": "get user to time out",
-          "category": "Variable",
-          "type": "Get Mentioned User",
-          "messageActionRows": [],
-          "varname": "getUserTimeOut",
-          "vartype": "User",
-          "savevartype": "temp"
         },
         {
           "name": "getReason_2",

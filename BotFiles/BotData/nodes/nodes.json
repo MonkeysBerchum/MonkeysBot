@@ -1043,8 +1043,6 @@
       "guid": "3e840139-e85c-453b-9438-91441c4a7adc",
       "reactionFields": [],
       "embedfields": [],
-      "saveToVariable": "",
-      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
@@ -1098,7 +1096,7 @@
         {
           "label": "responses",
           "connections": [
-            "cbbe0460-dbef-484e-972b-886fb3793fd0"
+            "61583f2d-a4ad-468a-aac3-bb09769377ec"
           ]
         }
       ],
@@ -1116,22 +1114,24 @@
       "guid": "61583f2d-a4ad-468a-aac3-bb09769377ec",
       "reactionFields": [],
       "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
           "connections": [
-            "267d3a70-b84e-4327-8b47-679fe0ff977d"
+            "cbbe0460-dbef-484e-972b-886fb3793fd0"
           ]
         }
       ],
       "inputs": [
         {
           "label": "trigger",
-          "id": "cbbe0460-dbef-484e-972b-886fb3793fd0"
+          "id": "82384690-05ec-41ff-adaf-67f2dc484e6b"
         }
       ],
-      "x": 1499,
-      "y": 719,
+      "x": 1341,
+      "y": 711,
       "rtype": "Variable",
       "rsubtype": "Get Mentioned User",
       "formdata": [
@@ -1168,7 +1168,7 @@
       "inputs": [
         {
           "label": "trigger",
-          "id": "61583f2d-a4ad-468a-aac3-bb09769377ec"
+          "id": "cbbe0460-dbef-484e-972b-886fb3793fd0"
         }
       ],
       "x": 1680,
@@ -1237,18 +1237,18 @@
         {
           "label": "next response",
           "connections": [
-            "61583f2d-a4ad-468a-aac3-bb09769377ec"
+            "267d3a70-b84e-4327-8b47-679fe0ff977d"
           ]
         }
       ],
       "inputs": [
         {
           "label": "trigger",
-          "id": "82384690-05ec-41ff-adaf-67f2dc484e6b"
+          "id": "61583f2d-a4ad-468a-aac3-bb09769377ec"
         }
       ],
-      "x": 1328,
-      "y": 716,
+      "x": 1511,
+      "y": 725,
       "rtype": "Variable",
       "rsubtype": "Store Value in Variable",
       "formdata": [
