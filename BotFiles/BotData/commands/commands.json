@@ -48,6 +48,7 @@
     },
     {
       "name": "help",
+      "perms": [],
       "actions": [
         {
           "name": "helpList",
@@ -61,7 +62,7 @@
           "authorname": "",
           "authorimageurl": "",
           "authorlink": "",
-          "description": "!twitch - sendet den Twitch-Link\n\nMehr Commands werden folgen. Falls Commands gewünscht werden, bitte \nunter der Hilfe-Kategore einen Beitrag erstellen. ",
+          "description": "!twitch - sendet den Twitch-Link\n!github - link zum GitHub\n!mcmod - link zu dem MC-Mod-Pack download\n!ticket - erstellt ein Ticket für besseren support\n\nMehr Commands werden folgen. Falls Commands gewünscht werden, bitte \nunter der Hilfe-Kategore einen Beitrag erstellen. ",
           "thumbnail": "",
           "image": "",
           "footer": "~MonkeysBot",
@@ -87,7 +88,7 @@
           "authorname": "",
           "authorimageurl": "",
           "authorlink": "",
-          "description": "!twitch - sendet den Twitch-Link\n\nMehr Commands werden folgen. Falls Commands gewünscht werden, bitte \nunter der Hilfe-Kategore einen Beitrag erstellen. ",
+          "description": "!twitch - sendet den Twitch-Link\n!github - link zum GitHub\n!mcmod - link zu dem MC-Mod-Pack download\n!ticket - erstellt ein Ticket für besseren support\n\nMehr Commands werden folgen. Falls Commands gewünscht werden, bitte \nunter der Hilfe-Kategore einen Beitrag erstellen. ",
           "thumbnail": "",
           "image": "",
           "footer": "~MonkeysBot",
@@ -109,14 +110,14 @@
           "category": "Message",
           "type": "Send Embed",
           "messageActionRows": [],
-          "channelname": "${dbsVars.CommandChannel.id}``",
+          "channelname": "${dbsVars.CommandChannel.id}",
           "color": "1CB96A",
           "title": "Liste der Mod-Commands",
           "url": "",
           "authorname": "",
           "authorimageurl": "",
           "authorlink": "",
-          "description": "!kick @user \"REASON\" \n!ban @user \"REASON\"",
+          "description": "!kick @user \"REASON\" \n!ban @user \"REASON\"\n!timeout @user \"TIME (Number in Minutes)\" \"REASON\"",
           "thumbnail": "",
           "image": "",
           "footer": "~Luke",
@@ -181,6 +182,15 @@
       "name": "ban",
       "actions": [
         {
+          "name": "get user ban",
+          "category": "Variable",
+          "type": "Get Mentioned User",
+          "messageActionRows": [],
+          "varname": "getUserBan",
+          "vartype": "User",
+          "savevartype": "temp"
+        },
+        {
           "name": "getReason_1",
           "category": "Variable",
           "type": "Store Value in Variable",
@@ -195,7 +205,7 @@
           "category": "User Action",
           "type": "Ban User",
           "messageActionRows": [],
-          "user": "${tempVars.getUserKick.id}",
+          "user": "${tempVars.getUserBan.id}",
           "reason": "${tempVars.banReason}",
           "days": ""
         },
@@ -213,6 +223,7 @@
     },
     {
       "name": "twitch",
+      "perms": [],
       "actions": [
         {
           "name": "twitchLink",
@@ -266,6 +277,216 @@
           "timestamp": "false",
           "savetovariable": "",
           "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "github",
+      "perms": [],
+      "actions": [
+        {
+          "name": "githubLink",
+          "category": "Message",
+          "type": "Send Message",
+          "messageActionRows": [],
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "messagetext": "Die offizielle GitHub-Organisation von MonkeysBerchum, über welche ihr euch die Repositories der Projekte downloaden könnt. \nhttps://github.com/MonkeysBerchum",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "mcmod",
+      "perms": [],
+      "actions": [
+        {
+          "name": "mcmodLink",
+          "category": "Message",
+          "type": "Send Message",
+          "messageActionRows": [],
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "messagetext": "Hier könnt ihr euch die zip-Datei mit den Minecraft-Mods runterladen. Folgt dazu einfach den Anweisungen der README.md Datei oder dem Text auf der Seite.\nhttps://github.com/MonkeysBerchum/MC-ModPack",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "ticket",
+      "perms": [],
+      "actions": [
+        {
+          "name": "make ticket channel",
+          "category": "Channel Action",
+          "type": "Create Channel",
+          "messageActionRows": [],
+          "channelname": "${dbsVars.CommandAuthor.displayName}",
+          "chancategory": "ticket",
+          "reason": "${dbsVars.CommandAuthor.displayName} (${dbsVars.CommandAuthor.id}) called for a ticket",
+          "channeltype": "Text",
+          "savetovariable": "new_ticket_channel",
+          "savetovariabletype": "temp"
+        },
+        {
+          "name": "make channel private",
+          "category": "Channel Action",
+          "type": "Update Channel Permissions",
+          "messageActionRows": [],
+          "channelname": "${tempVars.new_ticket_channel.id}",
+          "permid": "${dbsVars.guild.id}",
+          "permissions": [
+            "VIEW_CHANNEL",
+            "SEND_MESSAGES"
+          ],
+          "allow": "Deny"
+        },
+        {
+          "name": "give user perms",
+          "category": "Channel Action",
+          "type": "Update Channel Permissions",
+          "messageActionRows": [],
+          "channelname": "${tempVars.new_ticket_channel.id}",
+          "permid": "${dbsVars.CommandAuthor.id}",
+          "permissions": [
+            "VIEW_CHANNEL",
+            "SEND_MESSAGES",
+            "EMBED_LINKS",
+            "ATTACH_FILES"
+          ],
+          "allow": "Allow"
+        },
+        {
+          "name": "ticket message",
+          "category": "Message",
+          "type": "Send Message",
+          "messageActionRows": [
+            {
+              "rowtype": "button",
+              "buttons": [
+                {
+                  "label": "Ticket schließen ",
+                  "customid": "closeTicket",
+                  "style": "PRIMARY",
+                  "emoji": "",
+                  "URL": "",
+                  "ephemeral": false
+                }
+              ]
+            }
+          ],
+          "channelname": "${tempVars.new_ticket_channel.id}",
+          "messagetext": "Du hast ein Ticket erstellt. Bitte erkäre dein Problem so gut es geht, damit dein Problem schnellstmöglich gelöst werden kann.",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "timeout",
+      "perms": [
+        "mod",
+        "admin"
+      ],
+      "actions": [
+        {
+          "name": "timeout time",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "userTimeOutTime",
+          "vartype": "Number",
+          "savevartype": "temp",
+          "param": "1"
+        },
+        {
+          "name": "get user to time out",
+          "category": "Variable",
+          "type": "Get Mentioned User",
+          "messageActionRows": [],
+          "varname": "getUserTimeOut",
+          "vartype": "User",
+          "savevartype": "temp"
+        },
+        {
+          "name": "getReason_2",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "timeoutReason",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "2+"
+        },
+        {
+          "name": "give user timed out roll",
+          "category": "User Action",
+          "type": "Add Role to User",
+          "messageActionRows": [],
+          "user": "${tempVars.getUserTimeOut.id}",
+          "rolename": "Timed Out"
+        },
+        {
+          "name": "remove verify timedout",
+          "category": "User Action",
+          "type": "Remove Role From User",
+          "messageActionRows": [],
+          "user": "${tempVars.getUserTimeOut.id}",
+          "rolename": "✅",
+          "reason": "${tempVars.getUserTimeOut.displayName} is timed out"
+        },
+        {
+          "name": "timedoutReason in channel",
+          "category": "Message",
+          "type": "Send Embed",
+          "messageActionRows": [],
+          "channelname": "<#1145008145341620334>",
+          "color": "FF0000",
+          "title": "<@${tempVars.getUserTimeOut.id}> wurde für ${tempVars.userTimeOutTime} Minuten in den Timeout geschickt",
+          "url": "",
+          "authorname": "",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "Grund für den Timeout:\n${tempVars.timeoutReason}",
+          "thumbnail": "",
+          "image": "",
+          "footer": "",
+          "timestamp": "false",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        },
+        {
+          "name": "timeout for time",
+          "category": "Control",
+          "type": "Wait",
+          "messageActionRows": [],
+          "waitduration": "${tempVars.userTimeOutTime}",
+          "unit": "minutes"
+        },
+        {
+          "name": "timeout for time_1",
+          "category": "Control",
+          "type": "Wait",
+          "messageActionRows": [],
+          "waitduration": "${tempVars.userTimeOutTime}",
+          "unit": "minutes"
+        },
+        {
+          "name": "remove timed out rolle",
+          "category": "User Action",
+          "type": "Remove Role From User",
+          "messageActionRows": [],
+          "user": "${tempVars.getUserTimeOut.id}",
+          "rolename": "timed out",
+          "reason": "${tempVars.getUserTimeOut.displayName} is no longer timed out"
+        },
+        {
+          "name": "give verify timedout",
+          "category": "User Action",
+          "type": "Add Role to User",
+          "messageActionRows": [],
+          "user": "${tempVars.getUserTimeOut.id}",
+          "rolename": "✅"
         }
       ]
     }

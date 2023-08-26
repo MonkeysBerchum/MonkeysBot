@@ -16,8 +16,8 @@
         }
       ],
       "inputs": [],
-      "x": 801,
-      "y": 572,
+      "x": 935,
+      "y": 995,
       "perms": []
     },
     {
@@ -32,8 +32,8 @@
         }
       ],
       "inputs": [],
-      "x": 101,
-      "y": 400,
+      "x": 108,
+      "y": 396,
       "perms": []
     },
     {
@@ -562,8 +562,8 @@
           "id": "49ebbc23-2903-4f05-ab69-bc9ecb4f067e"
         }
       ],
-      "x": 1128,
-      "y": 806,
+      "x": 430,
+      "y": 1033,
       "rtype": "User Data",
       "rsubtype": "Get User Data",
       "formdata": [
@@ -601,8 +601,8 @@
           "id": "1c5a7e2d-0273-407b-847f-42e543e1931e"
         }
       ],
-      "x": 1416,
-      "y": 797,
+      "x": 624,
+      "y": 1027,
       "rtype": "Message",
       "rsubtype": "Send Message",
       "formdata": [
@@ -644,6 +644,24 @@
           "connections": [
             "2db3cad2-b857-4723-8381-d2293a582566"
           ]
+        },
+        {
+          "label": "closeTicket",
+          "connections": [
+            "e753d8ab-d08b-4eae-8e11-f65da4db6064"
+          ]
+        },
+        {
+          "label": "closeTicket2",
+          "connections": [
+            "a1cea646-2684-4901-8db8-9aa4694bfa20"
+          ]
+        },
+        {
+          "label": "LetTicketOpen",
+          "connections": [
+            "c45f5da3-b66e-4b18-a045-4310452d2a9c"
+          ]
         }
       ],
       "inputs": [
@@ -663,13 +681,19 @@
         "varname",
         "switchvalue1",
         "switchvalue2",
-        "switchvalue3"
+        "switchvalue3",
+        "switchvalue4",
+        "switchvalue5",
+        "switchvalue6"
       ],
       "messageActionRows": [],
       "valueFields": [
         "getLivePing",
         "loseLivePing",
-        "acceptRules"
+        "acceptRules",
+        "closeTicket",
+        "closeTicket2",
+        "LetTicketOpen"
       ]
     },
     {
@@ -888,8 +912,8 @@
           "id": "49ebbc23-2903-4f05-ab69-bc9ecb4f067e"
         }
       ],
-      "x": 1285,
-      "y": 556,
+      "x": 1194,
+      "y": 1008,
       "rtype": "User Action",
       "rsubtype": "Add Role to User",
       "formdata": [
@@ -902,6 +926,205 @@
       ],
       "messageActionRows": [],
       "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "send delete embet",
+      "guid": "e753d8ab-d08b-4eae-8e11-f65da4db6064",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "b03eeb35-269d-4ebf-a346-874d2c8d7333"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "fae55e99-f6ae-4532-aae3-4c82ad9115aa"
+        }
+      ],
+      "x": 1269,
+      "y": 515,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${tempVars.buttoninteraction.channelId}",
+        "FF0000",
+        "Ticket schließen",
+        "",
+        "",
+        "",
+        "",
+        "Du bist dabei das Ticket zu schließen. Wenn du bestätigst, wird dieser Channel gelöscht und du musst ein neues Ticket erstellen, wenn du weiterhin Hilfe benötigst. \n\nBitte bestätige mit den Buttens unten.",
+        "",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [
+        {
+          "rowtype": "button",
+          "buttons": [
+            {
+              "label": "Ticket schließen ",
+              "customid": "closeTicket2",
+              "style": "DANGER",
+              "emoji": "",
+              "URL": "",
+              "ephemeral": false
+            },
+            {
+              "label": "Ticket offen lassen ",
+              "customid": "LetTicketOpen",
+              "style": "SUCCESS",
+              "emoji": "",
+              "URL": "",
+              "ephemeral": false
+            }
+          ]
+        }
+      ],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "delete bot reply_3",
+      "guid": "b03eeb35-269d-4ebf-a346-874d2c8d7333",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "e753d8ab-d08b-4eae-8e11-f65da4db6064"
+        }
+      ],
+      "x": 1489,
+      "y": 524,
+      "rtype": "Interaction",
+      "rsubtype": "Delete Interaction Reply",
+      "formdata": [
+        "${tempVars.buttoninteraction}"
+      ],
+      "formnames": [
+        "interactionobject"
+      ],
+      "messageActionRows": []
+    },
+    {
+      "type": "response",
+      "name": "delete ticket channel",
+      "guid": "a1cea646-2684-4901-8db8-9aa4694bfa20",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "fae55e99-f6ae-4532-aae3-4c82ad9115aa"
+        }
+      ],
+      "x": 1271,
+      "y": 669,
+      "rtype": "Channel Action",
+      "rsubtype": "Delete Channel",
+      "formdata": [
+        "${tempVars.buttoninteraction.channelId}",
+        ""
+      ],
+      "formnames": [
+        "channelname",
+        "reason"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "delete ticket embet",
+      "guid": "c45f5da3-b66e-4b18-a045-4310452d2a9c",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "e679cf89-9e9d-4b02-b656-a6e5a879c5d5"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "fae55e99-f6ae-4532-aae3-4c82ad9115aa"
+        }
+      ],
+      "x": 1273,
+      "y": 833,
+      "rtype": "Message",
+      "rsubtype": "Delete Message",
+      "messageActionRows": []
+    },
+    {
+      "type": "response",
+      "name": "delete bot reply_4",
+      "guid": "e679cf89-9e9d-4b02-b656-a6e5a879c5d5",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "c45f5da3-b66e-4b18-a045-4310452d2a9c"
+        }
+      ],
+      "x": 1490,
+      "y": 846,
+      "rtype": "Interaction",
+      "rsubtype": "Delete Interaction Reply",
+      "formdata": [
+        "${tempVars.buttoninteraction}"
+      ],
+      "formnames": [
+        "interactionobject"
+      ],
+      "messageActionRows": []
     }
   ]
 }

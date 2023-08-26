@@ -281,6 +281,76 @@
                 "messageActionRows": [],
                 "interactionobject": "${tempVars.buttoninteraction}"
               }
+            ],
+            "closeTicket": [
+              {
+                "name": "send delete embet",
+                "category": "Message",
+                "type": "Send Embed",
+                "messageActionRows": [
+                  {
+                    "rowtype": "button",
+                    "buttons": [
+                      {
+                        "label": "Ticket schließen ",
+                        "customid": "closeTicket2",
+                        "style": "DANGER",
+                        "emoji": "",
+                        "URL": "",
+                        "ephemeral": false
+                      },
+                      {
+                        "label": "Ticket offen lassen ",
+                        "customid": "LetTicketOpen",
+                        "style": "SUCCESS",
+                        "emoji": "",
+                        "URL": "",
+                        "ephemeral": false
+                      }
+                    ]
+                  }
+                ],
+                "channelname": "${tempVars.buttoninteraction.channelId}",
+                "color": "FF0000",
+                "title": "Ticket schließen",
+                "url": "",
+                "authorname": "",
+                "authorimageurl": "",
+                "authorlink": "",
+                "description": "Du bist dabei das Ticket zu schließen. Wenn du bestätigst, wird dieser Channel gelöscht und du musst ein neues Ticket erstellen, wenn du weiterhin Hilfe benötigst. \n\nBitte bestätige mit den Buttens unten.",
+                "thumbnail": "",
+                "image": "",
+                "footer": "",
+                "timestamp": "false",
+                "savetovariable": "",
+                "savetovariabletype": "temp"
+              },
+              {
+                "name": "delete bot reply_3",
+                "category": "Interaction",
+                "type": "Delete Interaction Reply",
+                "messageActionRows": [],
+                "interactionobject": "${tempVars.buttoninteraction}"
+              }
+            ],
+            "closeTicket2": [
+              {
+                "name": "delete ticket channel",
+                "category": "Channel Action",
+                "type": "Delete Channel",
+                "messageActionRows": [],
+                "channelname": "${tempVars.buttoninteraction.channelId}",
+                "reason": ""
+              }
+            ],
+            "LetTicketOpen": [
+              {
+                "name": "delete bot reply_4",
+                "category": "Interaction",
+                "type": "Delete Interaction Reply",
+                "messageActionRows": [],
+                "interactionobject": "${tempVars.buttoninteraction}"
+              }
             ]
           },
           "messageActionRows": [],

@@ -26,8 +26,6 @@
       "guid": "b75a5a19-b7aa-4f0a-9331-a1783f7cd80d",
       "reactionFields": [],
       "embedfields": [],
-      "saveToVariable": "",
-      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
@@ -106,8 +104,6 @@
       "guid": "f9bc4f90-d6a4-454b-8847-ac754e86ab9f",
       "reactionFields": [],
       "embedfields": [],
-      "saveToVariable": "",
-      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
@@ -143,8 +139,6 @@
       "guid": "f7c91b4c-b739-432a-8a21-0d06fb55491d",
       "reactionFields": [],
       "embedfields": [],
-      "saveToVariable": "",
-      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
@@ -190,7 +184,8 @@
       ],
       "inputs": [],
       "x": 77,
-      "y": 103
+      "y": 103,
+      "perms": []
     },
     {
       "type": "command",
@@ -310,7 +305,7 @@
         "",
         "",
         "",
-        "Durch das Drücken der Knöpfe unten, könnt ihr aussuchen, ob iht in <#1138542284913254532> gepingt werden wollt, wenn der Stream live geht. ",
+        "Durch das Drücken der Knöpfe unten, könnt ihr aussuchen, ob ihr in <#1138542284913254532> gepingt werden wollt, wenn der Stream live geht. ",
         "",
         "https://static-cdn.jtvnw.net/jtv_user_pictures/ed8f69c3-2c2f-4e6f-af09-e0a500f2c29c-profile_image-70x70.png",
         "~MonkeysBerchum ",
@@ -379,9 +374,8 @@
       "type": "response",
       "name": "get user ban",
       "guid": "127ccec9-801d-4c1a-aeb8-a73d4859678c",
+      "reactionFields": [],
       "embedfields": [],
-      "saveToVariable": "",
-      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
@@ -400,7 +394,18 @@
       "y": 532,
       "rtype": "Variable",
       "rsubtype": "Get Mentioned User",
-      "messageActionRows": []
+      "formdata": [
+        "getUserBan",
+        "User",
+        "temp"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
     },
     {
       "type": "response",
@@ -449,8 +454,6 @@
       "guid": "ba966ed0-6dec-425c-820a-3b4bd500a1f1",
       "reactionFields": [],
       "embedfields": [],
-      "saveToVariable": "",
-      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
@@ -470,7 +473,7 @@
       "rtype": "User Action",
       "rsubtype": "Ban User",
       "formdata": [
-        "${tempVars.getUserKick.id}",
+        "${tempVars.getUserBan.id}",
         "${tempVars.banReason}",
         ""
       ],
@@ -488,8 +491,6 @@
       "guid": "ce6e1b36-3afd-4cfa-9ea9-9eb26473a139",
       "reactionFields": [],
       "embedfields": [],
-      "saveToVariable": "",
-      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
@@ -544,14 +545,14 @@
       "rtype": "Message",
       "rsubtype": "Send Embed",
       "formdata": [
-        "${dbsVars.CommandChannel.id}``",
+        "${dbsVars.CommandChannel.id}",
         "1CB96A",
         "Liste der Mod-Commands",
         "",
         "",
         "",
         "",
-        "!kick @user \"REASON\" \n!ban @user \"REASON\"",
+        "!kick @user \"REASON\" \n!ban @user \"REASON\"\n!timeout @user \"TIME (Number in Minutes)\" \"REASON\"",
         "",
         "",
         "~Luke",
@@ -592,7 +593,8 @@
       ],
       "inputs": [],
       "x": 75,
-      "y": 365
+      "y": 365,
+      "perms": []
     },
     {
       "type": "response",
@@ -649,8 +651,8 @@
           "id": "217d9e07-c7ad-4eac-a96d-8d5cb15525a9"
         }
       ],
-      "x": 460,
-      "y": 129,
+      "x": 462,
+      "y": 130,
       "rtype": "Message",
       "rsubtype": "Send Embed",
       "formdata": [
@@ -661,7 +663,7 @@
         "",
         "",
         "",
-        "!twitch - sendet den Twitch-Link\n\nMehr Commands werden folgen. Falls Commands gewünscht werden, bitte \nunter der Hilfe-Kategore einen Beitrag erstellen. ",
+        "!twitch - sendet den Twitch-Link\n!github - link zum GitHub\n!mcmod - link zu dem MC-Mod-Pack download\n!ticket - erstellt ein Ticket für besseren support\n\nMehr Commands werden folgen. Falls Commands gewünscht werden, bitte \nunter der Hilfe-Kategore einen Beitrag erstellen. ",
         "",
         "",
         "~MonkeysBot",
@@ -701,8 +703,8 @@
         }
       ],
       "inputs": [],
-      "x": 1151,
-      "y": 706,
+      "x": 1558,
+      "y": 114,
       "perms": [
         "mod",
         "admin"
@@ -726,8 +728,8 @@
           "id": "43863a3d-e364-4701-84ff-99c09fde0be9"
         }
       ],
-      "x": 1367,
-      "y": 694,
+      "x": 1750,
+      "y": 77,
       "rtype": "Message",
       "rsubtype": "Send Embed",
       "formdata": [
@@ -777,6 +779,721 @@
           ]
         }
       ],
+      "valueFields": []
+    },
+    {
+      "type": "command",
+      "name": "github",
+      "guid": "0e145524-96e6-4435-b941-28978e2174ec",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "e7415d3a-9979-40b4-8af0-b39deda10cc8"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 68,
+      "y": 512,
+      "perms": []
+    },
+    {
+      "type": "response",
+      "name": "githubLink",
+      "guid": "e7415d3a-9979-40b4-8af0-b39deda10cc8",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "0e145524-96e6-4435-b941-28978e2174ec"
+        }
+      ],
+      "x": 282,
+      "y": 504,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "Die offizielle GitHub-Organisation von MonkeysBerchum, über welche ihr euch die Repositories der Projekte downloaden könnt. \nhttps://github.com/MonkeysBerchum",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "command",
+      "name": "mcmod",
+      "guid": "ed89f3d1-b78c-4c63-8d07-91b860ddf924",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "4c47434d-ebeb-46f0-b960-58339dedb18a"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 63,
+      "y": 672,
+      "perms": []
+    },
+    {
+      "type": "response",
+      "name": "mcmodLink",
+      "guid": "4c47434d-ebeb-46f0-b960-58339dedb18a",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "ed89f3d1-b78c-4c63-8d07-91b860ddf924"
+        }
+      ],
+      "x": 278,
+      "y": 670,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "Hier könnt ihr euch die zip-Datei mit den Minecraft-Mods runterladen. Folgt dazu einfach den Anweisungen der README.md Datei oder dem Text auf der Seite.\nhttps://github.com/MonkeysBerchum/MC-ModPack",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "command",
+      "name": "ticket",
+      "guid": "2bc243f4-1e35-4117-9dbf-22287926d28e",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "912c3fd7-27c5-4d70-8f10-88522a277728"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 62,
+      "y": 849,
+      "perms": []
+    },
+    {
+      "type": "response",
+      "name": "make ticket channel",
+      "guid": "912c3fd7-27c5-4d70-8f10-88522a277728",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "new_ticket_channel",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "ca79c8a6-f4dd-4c28-b2e8-d6c004e7c250"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "2bc243f4-1e35-4117-9dbf-22287926d28e"
+        }
+      ],
+      "x": 281,
+      "y": 825,
+      "rtype": "Channel Action",
+      "rsubtype": "Create Channel",
+      "formdata": [
+        "${dbsVars.CommandAuthor.displayName}",
+        "ticket",
+        "${dbsVars.CommandAuthor.displayName} (${dbsVars.CommandAuthor.id}) called for a ticket",
+        "Text",
+        "new_ticket_channel",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "chancategory",
+        "reason",
+        "channeltype",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "make channel private",
+      "guid": "ca79c8a6-f4dd-4c28-b2e8-d6c004e7c250",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "c7e0d440-1fae-4f08-84e7-3a38b7e54b6d"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "912c3fd7-27c5-4d70-8f10-88522a277728"
+        }
+      ],
+      "x": 466,
+      "y": 824,
+      "rtype": "Channel Action",
+      "rsubtype": "Update Channel Permissions",
+      "formdata": [
+        "${tempVars.new_ticket_channel.id}",
+        "${dbsVars.guild.id}",
+        [
+          "VIEW_CHANNEL",
+          "SEND_MESSAGES"
+        ],
+        "Deny"
+      ],
+      "formnames": [
+        "channelName",
+        "permid",
+        "permissions",
+        "allow"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "give user perms",
+      "guid": "c7e0d440-1fae-4f08-84e7-3a38b7e54b6d",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "3e840139-e85c-453b-9438-91441c4a7adc"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "ca79c8a6-f4dd-4c28-b2e8-d6c004e7c250"
+        }
+      ],
+      "x": 673,
+      "y": 825,
+      "rtype": "Channel Action",
+      "rsubtype": "Update Channel Permissions",
+      "formdata": [
+        "${tempVars.new_ticket_channel.id}",
+        "${dbsVars.CommandAuthor.id}",
+        [
+          "VIEW_CHANNEL",
+          "SEND_MESSAGES",
+          "EMBED_LINKS",
+          "ATTACH_FILES"
+        ],
+        "Allow"
+      ],
+      "formnames": [
+        "channelName",
+        "permid",
+        "permissions",
+        "allow"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "ticket message",
+      "guid": "3e840139-e85c-453b-9438-91441c4a7adc",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "c7e0d440-1fae-4f08-84e7-3a38b7e54b6d"
+        }
+      ],
+      "x": 872,
+      "y": 823,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${tempVars.new_ticket_channel.id}",
+        "Du hast ein Ticket erstellt. Bitte erkäre dein Problem so gut es geht, damit dein Problem schnellstmöglich gelöst werden kann.",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [
+        {
+          "rowtype": "button",
+          "buttons": [
+            {
+              "label": "Ticket schließen ",
+              "customid": "closeTicket",
+              "style": "PRIMARY",
+              "emoji": "",
+              "URL": "",
+              "ephemeral": false
+            }
+          ]
+        }
+      ],
+      "valueFields": []
+    },
+    {
+      "type": "command",
+      "name": "timeout",
+      "guid": "82384690-05ec-41ff-adaf-67f2dc484e6b",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "cbbe0460-dbef-484e-972b-886fb3793fd0"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 1154,
+      "y": 731,
+      "perms": [
+        "mod",
+        "admin"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "get user to time out",
+      "guid": "61583f2d-a4ad-468a-aac3-bb09769377ec",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "267d3a70-b84e-4327-8b47-679fe0ff977d"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "cbbe0460-dbef-484e-972b-886fb3793fd0"
+        }
+      ],
+      "x": 1499,
+      "y": 719,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "getUserTimeOut",
+        "User",
+        "temp"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "getReason_2",
+      "guid": "267d3a70-b84e-4327-8b47-679fe0ff977d",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "timeoutReason",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "2b34a543-f257-45c8-adae-08b32db6b499",
+            "f83480bf-37ed-47bb-9dc2-8a607e845236",
+            "01352df5-2140-4859-8016-1e3710d91e09"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "61583f2d-a4ad-468a-aac3-bb09769377ec"
+        }
+      ],
+      "x": 1680,
+      "y": 740,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "timeoutReason",
+        "Text",
+        "temp",
+        "2+"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "give user timed out roll",
+      "guid": "2b34a543-f257-45c8-adae-08b32db6b499",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "503132de-409d-451b-a485-5f73a8c62a19"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "267d3a70-b84e-4327-8b47-679fe0ff977d"
+        }
+      ],
+      "x": 1855,
+      "y": 722,
+      "rtype": "User Action",
+      "rsubtype": "Add Role to User",
+      "formdata": [
+        "${tempVars.getUserTimeOut.id}",
+        "Timed Out"
+      ],
+      "formnames": [
+        "user",
+        "roleName"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "timeout time",
+      "guid": "cbbe0460-dbef-484e-972b-886fb3793fd0",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "userTimeOutTime",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "61583f2d-a4ad-468a-aac3-bb09769377ec"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "82384690-05ec-41ff-adaf-67f2dc484e6b"
+        }
+      ],
+      "x": 1328,
+      "y": 716,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "userTimeOutTime",
+        "Number",
+        "temp",
+        "1"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "timeout for time",
+      "guid": "503132de-409d-451b-a485-5f73a8c62a19",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "d177e435-0f96-4a41-9e1f-86aaddccf2c0"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "2b34a543-f257-45c8-adae-08b32db6b499"
+        }
+      ],
+      "x": 2050,
+      "y": 724,
+      "rtype": "Control",
+      "rsubtype": "Wait",
+      "formdata": [
+        "${tempVars.userTimeOutTime}",
+        "minutes"
+      ],
+      "formnames": [
+        "waitduration",
+        "unit"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "remove timed out rolle",
+      "guid": "d177e435-0f96-4a41-9e1f-86aaddccf2c0",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "503132de-409d-451b-a485-5f73a8c62a19"
+        }
+      ],
+      "x": 2253,
+      "y": 729,
+      "rtype": "User Action",
+      "rsubtype": "Remove Role From User",
+      "formdata": [
+        "${tempVars.getUserTimeOut.id}",
+        "timed out",
+        "${tempVars.getUserTimeOut.displayName} is no longer timed out"
+      ],
+      "formnames": [
+        "user",
+        "roleName",
+        "reason"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "remove verify timedout",
+      "guid": "f83480bf-37ed-47bb-9dc2-8a607e845236",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "5262321e-2306-4cbf-ae7c-4322f62c8e5d"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "267d3a70-b84e-4327-8b47-679fe0ff977d"
+        }
+      ],
+      "x": 1853,
+      "y": 889,
+      "rtype": "User Action",
+      "rsubtype": "Remove Role From User",
+      "formdata": [
+        "${tempVars.getUserTimeOut.id}",
+        "✅",
+        "${tempVars.getUserTimeOut.displayName} is timed out"
+      ],
+      "formnames": [
+        "user",
+        "roleName",
+        "reason"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "timeout for time_1",
+      "guid": "5262321e-2306-4cbf-ae7c-4322f62c8e5d",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "089f9114-d4d3-4511-8eaf-71f41092b909"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "f83480bf-37ed-47bb-9dc2-8a607e845236"
+        }
+      ],
+      "x": 2050,
+      "y": 906,
+      "rtype": "Control",
+      "rsubtype": "Wait",
+      "formdata": [
+        "${tempVars.userTimeOutTime}",
+        "minutes"
+      ],
+      "formnames": [
+        "waitduration",
+        "unit"
+      ],
+      "messageActionRows": []
+    },
+    {
+      "type": "response",
+      "name": "give verify timedout",
+      "guid": "089f9114-d4d3-4511-8eaf-71f41092b909",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "5262321e-2306-4cbf-ae7c-4322f62c8e5d"
+        }
+      ],
+      "x": 2249,
+      "y": 904,
+      "rtype": "User Action",
+      "rsubtype": "Add Role to User",
+      "formdata": [
+        "${tempVars.getUserTimeOut.id}",
+        "✅"
+      ],
+      "formnames": [
+        "user",
+        "roleName"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "timedoutReason in channel",
+      "guid": "01352df5-2140-4859-8016-1e3710d91e09",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "267d3a70-b84e-4327-8b47-679fe0ff977d"
+        }
+      ],
+      "x": 1852,
+      "y": 1071,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "<#1145008145341620334>",
+        "FF0000",
+        "<@${tempVars.getUserTimeOut.id}> wurde für ${tempVars.userTimeOutTime} Minuten in den Timeout geschickt",
+        "",
+        "",
+        "",
+        "",
+        "Grund für den Timeout:\n${tempVars.timeoutReason}",
+        "",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
       "valueFields": []
     }
   ]
