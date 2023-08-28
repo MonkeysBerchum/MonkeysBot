@@ -406,7 +406,7 @@
           "varname": "userTimeOutTime",
           "vartype": "Number",
           "savevartype": "temp",
-          "param": "1"
+          "param": "2"
         },
         {
           "name": "getReason_2",
@@ -416,7 +416,7 @@
           "varname": "timeoutReason",
           "vartype": "Text",
           "savevartype": "temp",
-          "param": "2+"
+          "param": "3+"
         },
         {
           "name": "give user timed out roll",
