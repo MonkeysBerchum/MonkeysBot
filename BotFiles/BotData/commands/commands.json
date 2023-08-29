@@ -390,103 +390,93 @@
       ],
       "actions": [
         {
-          "name": "get user to time out",
+          "name": "get user timeout",
           "category": "Variable",
           "type": "Get Mentioned User",
           "messageActionRows": [],
-          "varname": "getUserTimeOut",
+          "varname": "timeout_user",
           "vartype": "User",
-          "savevartype": "temp"
+          "savevartype": "server"
         },
         {
-          "name": "timeout time",
+          "name": "log timeout reason",
           "category": "Variable",
           "type": "Store Value in Variable",
           "messageActionRows": [],
-          "varname": "userTimeOutTime",
-          "vartype": "Number",
-          "savevartype": "temp",
-          "param": "2"
-        },
-        {
-          "name": "getReason_2",
-          "category": "Variable",
-          "type": "Store Value in Variable",
-          "messageActionRows": [],
-          "varname": "timeoutReason",
+          "varname": "timeout_reason",
           "vartype": "Text",
-          "savevartype": "temp",
+          "savevartype": "server",
           "param": "3+"
         },
         {
-          "name": "give user timed out roll",
-          "category": "User Action",
-          "type": "Add Role to User",
+          "name": "get timeout time",
+          "category": "Variable",
+          "type": "Store Value in Variable",
           "messageActionRows": [],
-          "user": "${tempVars.getUserTimeOut.id}",
-          "rolename": "Timed Out"
+          "varname": "timeout_time",
+          "vartype": "Number",
+          "savevartype": "server",
+          "param": "2"
         },
         {
-          "name": "remove verify timedout",
+          "name": "delete timeout message",
+          "category": "Message",
+          "type": "Delete Message",
+          "messageActionRows": [],
+          "varname": "${dbsVars.CommandMessage.id}",
+          "channelname": "${dbsVars.CommandChannel.id}"
+        },
+        {
+          "name": "remove rules rolle",
           "category": "User Action",
           "type": "Remove Role From User",
           "messageActionRows": [],
-          "user": "${tempVars.getUserTimeOut.id}",
-          "rolename": "✅",
-          "reason": "${tempVars.getUserTimeOut.displayName} is timed out"
+          "user": "${tempVars.timeout_user.id}",
+          "rolename": "1139074974880108566",
+          "reason": "user is timed out"
         },
         {
-          "name": "timedoutReason in channel",
+          "name": "log reason in channel",
           "category": "Message",
-          "type": "Send Embed",
+          "type": "Send Message",
           "messageActionRows": [],
-          "channelname": "<#1145008145341620334>",
-          "color": "FF0000",
-          "title": "<@${tempVars.getUserTimeOut.id}> wurde für ${tempVars.userTimeOutTime} Minuten in den Timeout geschickt",
-          "url": "",
-          "authorname": "",
-          "authorimageurl": "",
-          "authorlink": "",
-          "description": "Grund für den Timeout:\n${tempVars.timeoutReason}",
-          "thumbnail": "",
-          "image": "",
-          "footer": "",
-          "timestamp": "false",
+          "channelname": "${serverVars.timeout_reason}",
+          "messagetext": "<@${serverVars.timeout_user.id}> ist timed out für ${serverVars.timeout_time} Minuten. Grund: ${serverVars.timeout_reason}",
           "savetovariable": "",
           "savetovariabletype": "temp"
         },
         {
-          "name": "timeout for time",
+          "name": "wait timeout",
           "category": "Control",
           "type": "Wait",
           "messageActionRows": [],
-          "waitduration": "${tempVars.userTimeOutTime}",
+          "waitduration": "${tempVars.timeout_time}",
           "unit": "minutes"
         },
         {
-          "name": "timeout for time_1",
-          "category": "Control",
-          "type": "Wait",
-          "messageActionRows": [],
-          "waitduration": "${tempVars.userTimeOutTime}",
-          "unit": "minutes"
-        },
-        {
-          "name": "remove timed out rolle",
-          "category": "User Action",
-          "type": "Remove Role From User",
-          "messageActionRows": [],
-          "user": "${tempVars.getUserTimeOut.id}",
-          "rolename": "timed out",
-          "reason": "${tempVars.getUserTimeOut.displayName} is no longer timed out"
-        },
-        {
-          "name": "give verify timedout",
+          "name": "add timeout rolle",
           "category": "User Action",
           "type": "Add Role to User",
           "messageActionRows": [],
-          "user": "${tempVars.getUserTimeOut.id}",
-          "rolename": "✅"
+          "user": "${tempVars.timeout_user.id}",
+          "rolename": "1145007878764245142"
+        },
+        {
+          "name": "add rules rolle",
+          "category": "User Action",
+          "type": "Add Role to User",
+          "messageActionRows": [],
+          "user": "${serverVars.timeout_user.id}",
+          "rolename": "check"
+        },
+        {
+          "name": "remove timeout rolle",
+          "category": "User Action",
+          "type": "Remove Role From User",
+          "messageActionRows": [],
+          "user": "${serverVars.timeout_user.id}",
+          "rolename": "1145007878764245142",
+          "reason": "user is not timed out anymore"
         }
       ]
     }

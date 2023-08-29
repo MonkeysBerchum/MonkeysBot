@@ -1096,7 +1096,10 @@
         {
           "label": "responses",
           "connections": [
-            "61583f2d-a4ad-468a-aac3-bb09769377ec"
+            "ea5cd793-1173-412b-93ed-e0e97ccafc7e",
+            "803807bf-4c53-46d6-a1ad-7d8858b73dc5",
+            "49fa9698-50e0-42ee-ae10-73ccfe64ad55",
+            "e54ad03c-2d37-41bb-bf58-324f2f8c57d1"
           ]
         }
       ],
@@ -1110,8 +1113,8 @@
     },
     {
       "type": "response",
-      "name": "get user to time out",
-      "guid": "61583f2d-a4ad-468a-aac3-bb09769377ec",
+      "name": "get user timeout",
+      "guid": "ea5cd793-1173-412b-93ed-e0e97ccafc7e",
       "reactionFields": [],
       "embedfields": [],
       "saveToVariable": "",
@@ -1120,7 +1123,7 @@
         {
           "label": "next response",
           "connections": [
-            "cbbe0460-dbef-484e-972b-886fb3793fd0"
+            "ed2616fc-10e1-4187-a425-6679e353c0e5"
           ]
         }
       ],
@@ -1130,14 +1133,14 @@
           "id": "82384690-05ec-41ff-adaf-67f2dc484e6b"
         }
       ],
-      "x": 1341,
-      "y": 711,
+      "x": 1374,
+      "y": 699,
       "rtype": "Variable",
       "rsubtype": "Get Mentioned User",
       "formdata": [
-        "getUserTimeOut",
+        "timeout_user",
         "User",
-        "temp"
+        "server"
       ],
       "formnames": [
         "varname",
@@ -1149,74 +1152,70 @@
     },
     {
       "type": "response",
-      "name": "getReason_2",
-      "guid": "267d3a70-b84e-4327-8b47-679fe0ff977d",
+      "name": "remove rules rolle",
+      "guid": "ed2616fc-10e1-4187-a425-6679e353c0e5",
       "reactionFields": [],
       "embedfields": [],
-      "saveToVariable": "timeoutReason",
+      "saveToVariable": "",
       "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
           "connections": [
-            "2b34a543-f257-45c8-adae-08b32db6b499",
-            "f83480bf-37ed-47bb-9dc2-8a607e845236",
-            "01352df5-2140-4859-8016-1e3710d91e09"
+            "59637511-7dbb-43b4-b9ea-08e6b8a85e6e"
           ]
         }
       ],
       "inputs": [
         {
           "label": "trigger",
-          "id": "cbbe0460-dbef-484e-972b-886fb3793fd0"
+          "id": "ea5cd793-1173-412b-93ed-e0e97ccafc7e"
         }
       ],
-      "x": 1680,
-      "y": 740,
-      "rtype": "Variable",
-      "rsubtype": "Store Value in Variable",
+      "x": 1574,
+      "y": 700,
+      "rtype": "User Action",
+      "rsubtype": "Remove Role From User",
       "formdata": [
-        "timeoutReason",
-        "Text",
-        "temp",
-        "2+"
+        "${tempVars.timeout_user.id}",
+        "1139074974880108566",
+        "user is timed out"
       ],
       "formnames": [
-        "varname",
-        "vartype",
-        "saveVarType",
-        "param"
+        "user",
+        "roleName",
+        "reason"
       ],
       "messageActionRows": [],
       "valueFields": []
     },
     {
       "type": "response",
-      "name": "give user timed out roll",
-      "guid": "2b34a543-f257-45c8-adae-08b32db6b499",
+      "name": "add timeout rolle",
+      "guid": "59637511-7dbb-43b4-b9ea-08e6b8a85e6e",
       "reactionFields": [],
       "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
-          "connections": [
-            "503132de-409d-451b-a485-5f73a8c62a19"
-          ]
+          "connections": []
         }
       ],
       "inputs": [
         {
           "label": "trigger",
-          "id": "267d3a70-b84e-4327-8b47-679fe0ff977d"
+          "id": "ed2616fc-10e1-4187-a425-6679e353c0e5"
         }
       ],
-      "x": 1855,
-      "y": 722,
+      "x": 1768,
+      "y": 710,
       "rtype": "User Action",
       "rsubtype": "Add Role to User",
       "formdata": [
-        "${tempVars.getUserTimeOut.id}",
-        "Timed Out"
+        "${tempVars.timeout_user.id}",
+        "1145007878764245142"
       ],
       "formnames": [
         "user",
@@ -1227,35 +1226,35 @@
     },
     {
       "type": "response",
-      "name": "timeout time",
-      "guid": "cbbe0460-dbef-484e-972b-886fb3793fd0",
+      "name": "get timeout time",
+      "guid": "49fa9698-50e0-42ee-ae10-73ccfe64ad55",
       "reactionFields": [],
       "embedfields": [],
-      "saveToVariable": "userTimeOutTime",
-      "saveToVariableType": "temp",
+      "saveToVariable": "timeout_time",
+      "saveToVariableType": "server",
       "outputs": [
         {
           "label": "next response",
           "connections": [
-            "267d3a70-b84e-4327-8b47-679fe0ff977d"
+            "25c2f630-6aa4-4550-9325-b57aea7fadb7"
           ]
         }
       ],
       "inputs": [
         {
           "label": "trigger",
-          "id": "61583f2d-a4ad-468a-aac3-bb09769377ec"
+          "id": "82384690-05ec-41ff-adaf-67f2dc484e6b"
         }
       ],
-      "x": 1511,
-      "y": 725,
+      "x": 1368,
+      "y": 1023,
       "rtype": "Variable",
       "rsubtype": "Store Value in Variable",
       "formdata": [
-        "userTimeOutTime",
+        "timeout_time",
         "Number",
-        "temp",
-        "1"
+        "server",
+        "2"
       ],
       "formnames": [
         "varname",
@@ -1268,30 +1267,32 @@
     },
     {
       "type": "response",
-      "name": "timeout for time",
-      "guid": "503132de-409d-451b-a485-5f73a8c62a19",
+      "name": "wait timeout",
+      "guid": "25c2f630-6aa4-4550-9325-b57aea7fadb7",
       "reactionFields": [],
       "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
           "connections": [
-            "d177e435-0f96-4a41-9e1f-86aaddccf2c0"
+            "9437a78a-c281-4032-89c5-91746b6afb02"
           ]
         }
       ],
       "inputs": [
         {
           "label": "trigger",
-          "id": "2b34a543-f257-45c8-adae-08b32db6b499"
+          "id": "49fa9698-50e0-42ee-ae10-73ccfe64ad55"
         }
       ],
-      "x": 2050,
-      "y": 724,
+      "x": 1558,
+      "y": 1027,
       "rtype": "Control",
       "rsubtype": "Wait",
       "formdata": [
-        "${tempVars.userTimeOutTime}",
+        "${tempVars.timeout_time}",
         "minutes"
       ],
       "formnames": [
@@ -1303,134 +1304,31 @@
     },
     {
       "type": "response",
-      "name": "remove timed out rolle",
-      "guid": "d177e435-0f96-4a41-9e1f-86aaddccf2c0",
-      "reactionFields": [],
-      "embedfields": [],
-      "outputs": [
-        {
-          "label": "next response",
-          "connections": []
-        }
-      ],
-      "inputs": [
-        {
-          "label": "trigger",
-          "id": "503132de-409d-451b-a485-5f73a8c62a19"
-        }
-      ],
-      "x": 2253,
-      "y": 729,
-      "rtype": "User Action",
-      "rsubtype": "Remove Role From User",
-      "formdata": [
-        "${tempVars.getUserTimeOut.id}",
-        "timed out",
-        "${tempVars.getUserTimeOut.displayName} is no longer timed out"
-      ],
-      "formnames": [
-        "user",
-        "roleName",
-        "reason"
-      ],
-      "messageActionRows": [],
-      "valueFields": []
-    },
-    {
-      "type": "response",
-      "name": "remove verify timedout",
-      "guid": "f83480bf-37ed-47bb-9dc2-8a607e845236",
+      "name": "add rules rolle",
+      "guid": "9437a78a-c281-4032-89c5-91746b6afb02",
       "reactionFields": [],
       "embedfields": [],
       "outputs": [
         {
           "label": "next response",
           "connections": [
-            "5262321e-2306-4cbf-ae7c-4322f62c8e5d"
+            "139fb039-5d74-47aa-bcf3-3ca02938dfa4"
           ]
         }
       ],
       "inputs": [
         {
           "label": "trigger",
-          "id": "267d3a70-b84e-4327-8b47-679fe0ff977d"
+          "id": "25c2f630-6aa4-4550-9325-b57aea7fadb7"
         }
       ],
-      "x": 1853,
-      "y": 889,
-      "rtype": "User Action",
-      "rsubtype": "Remove Role From User",
-      "formdata": [
-        "${tempVars.getUserTimeOut.id}",
-        "✅",
-        "${tempVars.getUserTimeOut.displayName} is timed out"
-      ],
-      "formnames": [
-        "user",
-        "roleName",
-        "reason"
-      ],
-      "messageActionRows": [],
-      "valueFields": []
-    },
-    {
-      "type": "response",
-      "name": "timeout for time_1",
-      "guid": "5262321e-2306-4cbf-ae7c-4322f62c8e5d",
-      "embedfields": [],
-      "outputs": [
-        {
-          "label": "next response",
-          "connections": [
-            "089f9114-d4d3-4511-8eaf-71f41092b909"
-          ]
-        }
-      ],
-      "inputs": [
-        {
-          "label": "trigger",
-          "id": "f83480bf-37ed-47bb-9dc2-8a607e845236"
-        }
-      ],
-      "x": 2050,
-      "y": 906,
-      "rtype": "Control",
-      "rsubtype": "Wait",
-      "formdata": [
-        "${tempVars.userTimeOutTime}",
-        "minutes"
-      ],
-      "formnames": [
-        "waitduration",
-        "unit"
-      ],
-      "messageActionRows": []
-    },
-    {
-      "type": "response",
-      "name": "give verify timedout",
-      "guid": "089f9114-d4d3-4511-8eaf-71f41092b909",
-      "reactionFields": [],
-      "embedfields": [],
-      "outputs": [
-        {
-          "label": "next response",
-          "connections": []
-        }
-      ],
-      "inputs": [
-        {
-          "label": "trigger",
-          "id": "5262321e-2306-4cbf-ae7c-4322f62c8e5d"
-        }
-      ],
-      "x": 2249,
-      "y": 904,
+      "x": 1742,
+      "y": 1034,
       "rtype": "User Action",
       "rsubtype": "Add Role to User",
       "formdata": [
-        "${tempVars.getUserTimeOut.id}",
-        "✅"
+        "${serverVars.timeout_user.id}",
+        "check"
       ],
       "formnames": [
         "user",
@@ -1441,8 +1339,8 @@
     },
     {
       "type": "response",
-      "name": "timedoutReason in channel",
-      "guid": "01352df5-2140-4859-8016-1e3710d91e09",
+      "name": "remove timeout rolle",
+      "guid": "139fb039-5d74-47aa-bcf3-3ca02938dfa4",
       "reactionFields": [],
       "embedfields": [],
       "outputs": [
@@ -1454,44 +1352,133 @@
       "inputs": [
         {
           "label": "trigger",
-          "id": "267d3a70-b84e-4327-8b47-679fe0ff977d"
+          "id": "9437a78a-c281-4032-89c5-91746b6afb02"
         }
       ],
-      "x": 1852,
-      "y": 1071,
-      "rtype": "Message",
-      "rsubtype": "Send Embed",
+      "x": 1934,
+      "y": 1047,
+      "rtype": "User Action",
+      "rsubtype": "Remove Role From User",
       "formdata": [
-        "<#1145008145341620334>",
-        "FF0000",
-        "<@${tempVars.getUserTimeOut.id}> wurde für ${tempVars.userTimeOutTime} Minuten in den Timeout geschickt",
-        "",
-        "",
-        "",
-        "",
-        "Grund für den Timeout:\n${tempVars.timeoutReason}",
-        "",
-        "",
-        "",
-        "false",
+        "${serverVars.timeout_user.id}",
+        "1145007878764245142",
+        "user is not timed out anymore"
+      ],
+      "formnames": [
+        "user",
+        "roleName",
+        "reason"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "log timeout reason",
+      "guid": "803807bf-4c53-46d6-a1ad-7d8858b73dc5",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "timeout_reason",
+      "saveToVariableType": "server",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "d5ad93cd-1886-41e8-8f8a-73e4d2886f51"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "82384690-05ec-41ff-adaf-67f2dc484e6b"
+        }
+      ],
+      "x": 1372,
+      "y": 862,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "timeout_reason",
+        "Text",
+        "server",
+        "3+"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "log reason in channel",
+      "guid": "d5ad93cd-1886-41e8-8f8a-73e4d2886f51",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "803807bf-4c53-46d6-a1ad-7d8858b73dc5"
+        }
+      ],
+      "x": 1573,
+      "y": 856,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${serverVars.timeout_reason}",
+        "<@${serverVars.timeout_user.id}> ist timed out für ${serverVars.timeout_time} Minuten. Grund: ${serverVars.timeout_reason}",
         "",
         "temp"
       ],
       "formnames": [
-        "channelname",
-        "color",
-        "title",
-        "url",
-        "authorname",
-        "authorimageurl",
-        "authorlink",
-        "description",
-        "thumbnail",
-        "image",
-        "footer",
-        "timestamp",
+        "channelName",
+        "messageText",
         "saveToVariable",
         "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "delete timeout message",
+      "guid": "e54ad03c-2d37-41bb-bf58-324f2f8c57d1",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "82384690-05ec-41ff-adaf-67f2dc484e6b"
+        }
+      ],
+      "x": 1362,
+      "y": 1191,
+      "rtype": "Message",
+      "rsubtype": "Delete Message",
+      "formdata": [
+        "${dbsVars.CommandMessage.id}",
+        "${dbsVars.CommandChannel.id}"
+      ],
+      "formnames": [
+        "varname",
+        "channelName"
       ],
       "messageActionRows": [],
       "valueFields": []

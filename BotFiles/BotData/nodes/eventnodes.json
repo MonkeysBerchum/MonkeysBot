@@ -856,7 +856,7 @@
       "rsubtype": "Add Role to User",
       "formdata": [
         "${tempVars.buttoninteraction.member.id}",
-        "✅"
+        "1139074974880108566"
       ],
       "formnames": [
         "user",
@@ -933,8 +933,6 @@
       "guid": "e753d8ab-d08b-4eae-8e11-f65da4db6064",
       "reactionFields": [],
       "embedfields": [],
-      "saveToVariable": "",
-      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
