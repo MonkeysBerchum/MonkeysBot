@@ -390,11 +390,20 @@
       ],
       "actions": [
         {
-          "name": "get user timeout",
+          "name": "get timeout user",
           "category": "Variable",
           "type": "Get Mentioned User",
           "messageActionRows": [],
           "varname": "timeout_user",
+          "vartype": "User",
+          "savevartype": "server"
+        },
+        {
+          "name": "get timeout user_1",
+          "category": "Variable",
+          "type": "Get Mentioned User",
+          "messageActionRows": [],
+          "varname": "timeout_user1",
           "vartype": "User",
           "savevartype": "server"
         },
@@ -419,7 +428,17 @@
           "param": "2"
         },
         {
-          "name": "delete timeout message",
+          "name": "get timeout time_1",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "timeout_time1",
+          "vartype": "Number",
+          "savevartype": "server",
+          "param": "2"
+        },
+        {
+          "name": "delete command",
           "category": "Message",
           "type": "Delete Message",
           "messageActionRows": [],
@@ -427,21 +446,29 @@
           "channelname": "${dbsVars.CommandChannel.id}"
         },
         {
-          "name": "remove rules rolle",
+          "name": "remove rules role",
           "category": "User Action",
           "type": "Remove Role From User",
           "messageActionRows": [],
-          "user": "${tempVars.timeout_user.id}",
-          "rolename": "1139074974880108566",
+          "user": "${serverVars.timeout_user.id}",
+          "rolename": "check",
           "reason": "user is timed out"
+        },
+        {
+          "name": "give timeout role",
+          "category": "User Action",
+          "type": "Add Role to User",
+          "messageActionRows": [],
+          "user": "${serverVars.timeout_user.id}${serverVars.timeout_user1.id}",
+          "rolename": "timeout"
         },
         {
           "name": "log reason in channel",
           "category": "Message",
           "type": "Send Message",
           "messageActionRows": [],
-          "channelname": "${serverVars.timeout_reason}",
-          "messagetext": "<@${serverVars.timeout_user.id}> ist timed out für ${serverVars.timeout_time} Minuten. Grund: ${serverVars.timeout_reason}",
+          "channelname": "1138541457913954405",
+          "messagetext": "<@${serverVars.timeout_user.id}> ist für ${serverVars.timeout_time} Minuten im timeout. Grund: ${serverVars.timeout_reason}",
           "savetovariable": "",
           "savetovariabletype": "temp"
         },
@@ -450,19 +477,19 @@
           "category": "Control",
           "type": "Wait",
           "messageActionRows": [],
-          "waitduration": "${tempVars.timeout_time}",
+          "waitduration": "${serverVars.timeout_time}",
           "unit": "minutes"
         },
         {
-          "name": "add timeout rolle",
-          "category": "User Action",
-          "type": "Add Role to User",
+          "name": "wait timeout_1",
+          "category": "Control",
+          "type": "Wait",
           "messageActionRows": [],
-          "user": "${tempVars.timeout_user.id}",
-          "rolename": "1145007878764245142"
+          "waitduration": "${serverVars.timeout_time}${serverVars.timeout_time1}",
+          "unit": "minutes"
         },
         {
-          "name": "add rules rolle",
+          "name": "give rules role",
           "category": "User Action",
           "type": "Add Role to User",
           "messageActionRows": [],
@@ -470,13 +497,13 @@
           "rolename": "check"
         },
         {
-          "name": "remove timeout rolle",
+          "name": "remove timeout role",
           "category": "User Action",
           "type": "Remove Role From User",
           "messageActionRows": [],
-          "user": "${serverVars.timeout_user.id}",
-          "rolename": "1145007878764245142",
-          "reason": "user is not timed out anymore"
+          "user": "${serverVars.timeout_user.id}${serverVars.timeout_user1.id}",
+          "rolename": "timeout",
+          "reason": "user is no longer timeout"
         }
       ]
     }
