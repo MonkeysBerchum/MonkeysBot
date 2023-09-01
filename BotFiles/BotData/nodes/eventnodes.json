@@ -16,8 +16,8 @@
         }
       ],
       "inputs": [],
-      "x": 935,
-      "y": 995,
+      "x": 404,
+      "y": 688,
       "perms": []
     },
     {
@@ -28,12 +28,14 @@
       "outputs": [
         {
           "label": "responses",
-          "connections": []
+          "connections": [
+            "77a407ee-751d-4a97-9ab0-acbea98d4ffb"
+          ]
         }
       ],
       "inputs": [],
-      "x": 108,
-      "y": 396,
+      "x": 1048,
+      "y": 1078,
       "perms": []
     },
     {
@@ -542,86 +544,6 @@
     },
     {
       "type": "response",
-      "name": "getUserData",
-      "guid": "1c5a7e2d-0273-407b-847f-42e543e1931e",
-      "reactionFields": [],
-      "embedfields": [],
-      "saveToVariable": "getUserData",
-      "saveToVariableType": "temp",
-      "outputs": [
-        {
-          "label": "next response",
-          "connections": [
-            "6a907e8c-be67-42b0-bcc5-634de84e8b81"
-          ]
-        }
-      ],
-      "inputs": [
-        {
-          "label": "trigger",
-          "id": "49ebbc23-2903-4f05-ab69-bc9ecb4f067e"
-        }
-      ],
-      "x": 430,
-      "y": 1033,
-      "rtype": "User Data",
-      "rsubtype": "Get User Data",
-      "formdata": [
-        "<@${tempVars.newuser.id}>",
-        "<@${tempVars.newuser.id}>",
-        "getUserData",
-        "temp",
-        "User"
-      ],
-      "formnames": [
-        "user",
-        "field",
-        "varname",
-        "saveVarType",
-        "vartype"
-      ],
-      "messageActionRows": [],
-      "valueFields": []
-    },
-    {
-      "type": "response",
-      "name": "welcomeMessage",
-      "guid": "6a907e8c-be67-42b0-bcc5-634de84e8b81",
-      "reactionFields": [],
-      "embedfields": [],
-      "outputs": [
-        {
-          "label": "next response",
-          "connections": []
-        }
-      ],
-      "inputs": [
-        {
-          "label": "trigger",
-          "id": "1c5a7e2d-0273-407b-847f-42e543e1931e"
-        }
-      ],
-      "x": 624,
-      "y": 1027,
-      "rtype": "Message",
-      "rsubtype": "Send Message",
-      "formdata": [
-        "<#1137081406145695835>",
-        "<@${tempVars.newuser.id}> willkommen bei den Monkeys ",
-        "",
-        "temp"
-      ],
-      "formnames": [
-        "channelName",
-        "messageText",
-        "saveToVariable",
-        "saveToVariableType"
-      ],
-      "messageActionRows": [],
-      "valueFields": []
-    },
-    {
-      "type": "response",
       "name": "button switch",
       "guid": "fae55e99-f6ae-4532-aae3-4c82ad9115aa",
       "reactionFields": [],
@@ -912,8 +834,8 @@
           "id": "49ebbc23-2903-4f05-ab69-bc9ecb4f067e"
         }
       ],
-      "x": 1194,
-      "y": 1008,
+      "x": 686,
+      "y": 689,
       "rtype": "User Action",
       "rsubtype": "Add Role to User",
       "formdata": [
@@ -1122,6 +1044,68 @@
       "formnames": [
         "interactionobject"
       ],
+      "messageActionRows": []
+    },
+    {
+      "type": "response",
+      "name": "blacklisted words",
+      "guid": "77a407ee-751d-4a97-9ab0-acbea98d4ffb",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "true",
+          "connections": [
+            "a59b03d5-127c-43c5-9c62-fee372d821b6"
+          ]
+        },
+        {
+          "label": "false",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "49ebbc23-2903-4f05-ab69-bc9ecb4f8888"
+        }
+      ],
+      "x": 1250,
+      "y": 1049,
+      "rtype": "Variable",
+      "rsubtype": "Check If String Contains",
+      "formdata": [
+        "${tempVars.anymessage.content}",
+        "hurensohn "
+      ],
+      "formnames": [
+        "stringtocheck",
+        "valuetocheck"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "delete massage with bl word",
+      "guid": "a59b03d5-127c-43c5-9c62-fee372d821b6",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "77a407ee-751d-4a97-9ab0-acbea98d4ffb"
+        }
+      ],
+      "x": 1464,
+      "y": 1056,
+      "rtype": "Message",
+      "rsubtype": "Delete Message",
       "messageActionRows": []
     }
   ]

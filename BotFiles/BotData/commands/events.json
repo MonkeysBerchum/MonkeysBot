@@ -20,7 +20,18 @@
     {
       "name": "Any Message",
       "perms": [],
-      "actions": [],
+      "actions": [
+        {
+          "name": "blacklisted words",
+          "category": "Variable",
+          "type": "Check If String Contains",
+          "trueActions": [],
+          "falseActions": [],
+          "messageActionRows": [],
+          "stringtocheck": "${tempVars.anymessage.content}",
+          "valuetocheck": "hurensohn "
+        }
+      ],
       "var": {}
     },
     {

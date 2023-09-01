@@ -1101,7 +1101,8 @@
             "f5c6e077-389e-4625-8596-cc1bb0978f70",
             "440aa18c-7db2-4c0e-8a05-0b0949273c9b",
             "6d62f985-b706-4fc5-876c-131c23265ccf",
-            "6e78b381-659f-4e96-a30b-b03d112cd891"
+            "6e78b381-659f-4e96-a30b-b03d112cd891",
+            "6ce5cab0-5381-4d26-8214-ce9434bcf6d9"
           ]
         }
       ],
@@ -1582,6 +1583,65 @@
       "formnames": [
         "waitduration",
         "unit"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "send message in timeout channel",
+      "guid": "6ce5cab0-5381-4d26-8214-ce9434bcf6d9",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "7ded4489-46f5-4642-a0bf-577fa9ea804f"
+        }
+      ],
+      "x": 1425,
+      "y": 1753,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "1145008145341620334",
+        "FF0000",
+        "<@${serverVars.timeout_user.id}> hat einen timeout bekommen",
+        "",
+        "${dbsVars.CommandAuthor.displayName}",
+        "",
+        "",
+        "<@${serverVars.timeout_user.id}> wurde für ${serverVars.timeout_time} Minuten wegen ${serverVars.timeout_reason} ge timeouted. ",
+        "",
+        "",
+        "",
+        "false",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
       ],
       "messageActionRows": [],
       "valueFields": []

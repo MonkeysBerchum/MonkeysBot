@@ -446,6 +446,26 @@
           "channelname": "${dbsVars.CommandChannel.id}"
         },
         {
+          "name": "send message in timeout channel",
+          "category": "Message",
+          "type": "Send Embed",
+          "messageActionRows": [],
+          "channelname": "1145008145341620334",
+          "color": "FF0000",
+          "title": "<@${serverVars.timeout_user.id}> hat einen timeout bekommen",
+          "url": "",
+          "authorname": "${dbsVars.CommandAuthor.displayName}",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "<@${serverVars.timeout_user.id}> wurde für ${serverVars.timeout_time} Minuten wegen ${serverVars.timeout_reason} ge timeouted. ",
+          "thumbnail": "",
+          "image": "",
+          "footer": "",
+          "timestamp": "false",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        },
+        {
           "name": "remove rules role",
           "category": "User Action",
           "type": "Remove Role From User",
