@@ -329,6 +329,24 @@
           "savetovariabletype": "temp"
         },
         {
+          "name": "get reason",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "get ricket reason",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "1+"
+        },
+        {
+          "name": "delete !ticket",
+          "category": "Message",
+          "type": "Delete Message",
+          "messageActionRows": [],
+          "varname": "${dbsVars.CommandMessage.id}",
+          "channelname": "${dbsVars.CommandChannel.id}"
+        },
+        {
           "name": "make channel private",
           "category": "Channel Action",
           "type": "Update Channel Permissions",
@@ -340,6 +358,16 @@
             "SEND_MESSAGES"
           ],
           "allow": "Deny"
+        },
+        {
+          "name": "send reason",
+          "category": "Message",
+          "type": "Send Message",
+          "messageActionRows": [],
+          "channelname": "${tempVars.new_ticket_channel.id}",
+          "messagetext": "${tempVars.get ricket reason}",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
         },
         {
           "name": "give user perms",
