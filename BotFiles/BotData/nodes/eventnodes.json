@@ -11,7 +11,8 @@
         {
           "label": "responses",
           "connections": [
-            "89b03904-0dd3-47bc-bc2a-8a9ba6eb2827"
+            "89b03904-0dd3-47bc-bc2a-8a9ba6eb2827",
+            "aea5c460-02db-425e-9770-98590e557ace"
           ]
         }
       ],
@@ -1107,6 +1108,88 @@
       "rtype": "Message",
       "rsubtype": "Delete Message",
       "messageActionRows": []
+    },
+    {
+      "type": "response",
+      "name": "get user who joined",
+      "guid": "aea5c460-02db-425e-9770-98590e557ace",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "joined user ",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "af5d3acb-2bc4-448c-adfb-d3a03f5b3b8d"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "49ebbc23-2903-4f05-ab69-bc9ecb4f067e"
+        }
+      ],
+      "x": 656,
+      "y": 839,
+      "rtype": "User Data",
+      "rsubtype": "Get User Data",
+      "formdata": [
+        "${tempVars.newuser.id}",
+        "joined user ",
+        "joined user ",
+        "temp",
+        "User"
+      ],
+      "formnames": [
+        "user",
+        "field",
+        "varname",
+        "saveVarType",
+        "vartype"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "send message in #welcome",
+      "guid": "af5d3acb-2bc4-448c-adfb-d3a03f5b3b8d",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "aea5c460-02db-425e-9770-98590e557ace"
+        }
+      ],
+      "x": 860,
+      "y": 826,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "1137081406145695835",
+        "<@${tempVars.newuser.id}> ist jetzt auf dem Server",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
     }
   ]
 }

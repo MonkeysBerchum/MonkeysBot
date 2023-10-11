@@ -11,6 +11,27 @@
           "messageActionRows": [],
           "user": "${tempVars.newuser.id}",
           "rolename": "Besucher"
+        },
+        {
+          "name": "get user who joined",
+          "category": "User Data",
+          "type": "Get User Data",
+          "messageActionRows": [],
+          "user": "${tempVars.newuser.id}",
+          "field": "joined user ",
+          "varname": "joined user ",
+          "savevartype": "temp",
+          "vartype": "User"
+        },
+        {
+          "name": "send message in #welcome",
+          "category": "Message",
+          "type": "Send Message",
+          "messageActionRows": [],
+          "channelname": "1137081406145695835",
+          "messagetext": "<@${tempVars.newuser.id}> ist jetzt auf dem Server",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
         }
       ],
       "var": {
