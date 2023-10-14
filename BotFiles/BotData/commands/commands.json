@@ -616,6 +616,12 @@
           "reason": "user is no longer timeout"
         }
       ]
+    },
+    {
+      "name": "get_ad_badge",
+      "description": "get the active developer badge",
+      "ephemeral": true,
+      "options": []
     }
   ]
 }

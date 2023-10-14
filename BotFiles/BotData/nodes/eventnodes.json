@@ -535,12 +535,14 @@
       "outputs": [
         {
           "label": "responses",
-          "connections": []
+          "connections": [
+            "8c08c3c1-afde-4e35-ae43-36ec46492923"
+          ]
         }
       ],
       "inputs": [],
-      "x": 108,
-      "y": 74,
+      "x": 1843,
+      "y": 89,
       "perms": []
     },
     {
@@ -856,6 +858,8 @@
       "guid": "e753d8ab-d08b-4eae-8e11-f65da4db6064",
       "reactionFields": [],
       "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
@@ -1181,6 +1185,161 @@
         "<@${tempVars.newuser.id}> ist jetzt auf dem Server",
         "",
         "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "slash commands",
+      "guid": "8c08c3c1-afde-4e35-ae43-36ec46492923",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "get_ad_badge",
+          "connections": [
+            "2f9e7922-6a33-4a7b-998a-8c84c19b3ede"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "0y17nnm2-2773-pp4u-ayu9-b55q4886yt2e"
+        }
+      ],
+      "x": 2037,
+      "y": 94,
+      "rtype": "Control",
+      "rsubtype": "Switch Case",
+      "formdata": [
+        "${tempVars.commandinteraction.id}"
+      ],
+      "formnames": [
+        "varname",
+        "switchvalue1"
+      ],
+      "messageActionRows": [],
+      "valueFields": [
+        "get_ad_badge"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "the badge is active for 90 days",
+      "guid": "2f9e7922-6a33-4a7b-998a-8c84c19b3ede",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "global",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "974e2e61-8d15-4128-871a-f33172c3848d"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "8c08c3c1-afde-4e35-ae43-36ec46492923"
+        }
+      ],
+      "x": 2272,
+      "y": 91,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${tempVars.commandinteraction.channel}",
+        "The discord active developer badge is active for 90 days ",
+        "",
+        "global"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "ad badge reminder",
+      "guid": "974e2e61-8d15-4128-871a-f33172c3848d",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "53db071e-2bf3-4ef7-bbcd-3942f78d594e"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "2f9e7922-6a33-4a7b-998a-8c84c19b3ede"
+        }
+      ],
+      "x": 2473,
+      "y": 116,
+      "rtype": "Control",
+      "rsubtype": "Wait",
+      "formdata": [
+        "80",
+        "days"
+      ],
+      "formnames": [
+        "waitduration",
+        "unit"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "renew badge",
+      "guid": "53db071e-2bf3-4ef7-bbcd-3942f78d594e",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "global",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "974e2e61-8d15-4128-871a-f33172c3848d"
+        }
+      ],
+      "x": 2658,
+      "y": 130,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${tempVars.commandinteraction.channel}",
+        "please call /get_ad_badge again <@${tempVars.commandinteraction.member.id}>",
+        "",
+        "global"
       ],
       "formnames": [
         "channelName",

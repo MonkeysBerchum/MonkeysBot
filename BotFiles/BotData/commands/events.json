@@ -404,7 +404,47 @@
     {
       "name": "Command Interaction",
       "perms": [],
-      "actions": [],
+      "actions": [
+        {
+          "name": "slash commands",
+          "category": "Control",
+          "type": "Switch Case",
+          "valueActions": {
+            "get_ad_badge": [
+              {
+                "name": "the badge is active for 90 days",
+                "category": "Message",
+                "type": "Send Message",
+                "messageActionRows": [],
+                "channelname": "${tempVars.commandinteraction.channel}",
+                "messagetext": "The discord active developer badge is active for 90 days ",
+                "savetovariable": "",
+                "savetovariabletype": "global"
+              },
+              {
+                "name": "ad badge reminder",
+                "category": "Control",
+                "type": "Wait",
+                "messageActionRows": [],
+                "waitduration": "80",
+                "unit": "days"
+              },
+              {
+                "name": "renew badge",
+                "category": "Message",
+                "type": "Send Message",
+                "messageActionRows": [],
+                "channelname": "${tempVars.commandinteraction.channel}",
+                "messagetext": "please call /get_ad_badge again <@${tempVars.commandinteraction.member.id}>",
+                "savetovariable": "",
+                "savetovariabletype": "global"
+              }
+            ]
+          },
+          "messageActionRows": [],
+          "varname": "${tempVars.commandinteraction.id}"
+        }
+      ],
       "var": {
         "channel": ""
       }

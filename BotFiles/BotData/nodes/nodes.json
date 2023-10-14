@@ -26,8 +26,6 @@
       "guid": "b75a5a19-b7aa-4f0a-9331-a1783f7cd80d",
       "reactionFields": [],
       "embedfields": [],
-      "saveToVariable": "",
-      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
@@ -1047,8 +1045,6 @@
       "guid": "3e840139-e85c-453b-9438-91441c4a7adc",
       "reactionFields": [],
       "embedfields": [],
-      "saveToVariable": "",
-      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
@@ -1126,8 +1122,6 @@
       "guid": "6ea9e910-303e-49c3-9596-7a978af3c751",
       "reactionFields": [],
       "embedfields": [],
-      "saveToVariable": "",
-      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
@@ -1274,8 +1268,6 @@
       "guid": "140ae6ce-99c6-4244-b33b-4e9de9245089",
       "reactionFields": [],
       "embedfields": [],
-      "saveToVariable": "",
-      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
@@ -1457,8 +1449,6 @@
       "guid": "6e78b381-659f-4e96-a30b-b03d112cd891",
       "reactionFields": [],
       "embedfields": [],
-      "saveToVariable": "",
-      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
@@ -1685,8 +1675,6 @@
       "guid": "e7c174c7-44c3-4d45-9310-e6d224014c81",
       "reactionFields": [],
       "embedfields": [],
-      "saveToVariable": "",
-      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
@@ -1724,8 +1712,6 @@
       "guid": "4b938458-dcff-4be2-8112-9ea85d50a2ca",
       "reactionFields": [],
       "embedfields": [],
-      "saveToVariable": "",
-      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
@@ -1975,8 +1961,6 @@
       "guid": "c012aed1-a4ff-4786-953c-258101e7737a",
       "reactionFields": [],
       "embedfields": [],
-      "saveToVariable": "",
-      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
@@ -2007,6 +1991,18 @@
       ],
       "messageActionRows": [],
       "valueFields": []
+    },
+    {
+      "type": "slash",
+      "name": "get_ad_badge",
+      "guid": "439e079a-2634-49d7-9a63-687f897836dd",
+      "outputs": [],
+      "inputs": [],
+      "x": 1571,
+      "y": 217,
+      "description": "get the active developer badge",
+      "options": [],
+      "ephemeral": true
     }
   ]
 }
