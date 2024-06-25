@@ -253,7 +253,7 @@
               "rowtype": "button",
               "buttons": [
                 {
-                  "label": "Regeln aktzeptieren ",
+                  "label": "Regeln akzeptieren ",
                   "customid": "acceptRules",
                   "style": "SUCCESS",
                   "emoji": "✅",
