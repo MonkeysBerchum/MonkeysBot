@@ -253,7 +253,7 @@
               "rowtype": "button",
               "buttons": [
                 {
-                  "label": "Regeln akzeptieren ",
+                  "label": "Regeln aktzeptieren ",
                   "customid": "acceptRules",
                   "style": "SUCCESS",
                   "emoji": "✅",
@@ -336,7 +336,7 @@
           "varname": "get ricket reason",
           "vartype": "Text",
           "savevartype": "temp",
-          "param": "1+"
+          "param": "0"
         },
         {
           "name": "delete !ticket",
@@ -622,6 +622,73 @@
       "description": "get the active developer badge",
       "ephemeral": true,
       "options": []
+    },
+    {
+      "name": "whitelist",
+      "actions": [
+        {
+          "name": "make whitelist channel",
+          "category": "Channel Action",
+          "type": "Create Channel",
+          "messageActionRows": [],
+          "channelname": "${dbsVars.CommandAuthor.displayName}",
+          "chancategory": "minecraft",
+          "reason": "${dbsVars.CommandAuthor.displayName} wants to be whitelisted ",
+          "channeltype": "Text",
+          "savetovariable": "new_whitelist_channel",
+          "savetovariabletype": "temp"
+        },
+        {
+          "name": "delete !whitelist",
+          "category": "Message",
+          "type": "Delete Message",
+          "messageActionRows": [],
+          "varname": "${dbsVars.CommandMessage.id}",
+          "channelname": "${dbsVars.CommandChannel.id}"
+        },
+        {
+          "name": "make channel private_1",
+          "category": "Channel Action",
+          "type": "Update Channel Permissions",
+          "messageActionRows": [],
+          "channelname": "${tempVars.new_whitelist_channel.id}",
+          "permid": "${dbsVars.guild.id}",
+          "permissions": [
+            "VIEW_CHANNEL",
+            "SEND_MESSAGES"
+          ],
+          "allow": "Deny"
+        },
+        {
+          "name": "give user perms_1",
+          "category": "Channel Action",
+          "type": "Update Channel Permissions",
+          "messageActionRows": [],
+          "channelname": "${tempVars.new_whitelist_channel.id}",
+          "permid": "${dbsVars.CommandAuthor.id}",
+          "permissions": [
+            "VIEW_CHANNEL",
+            "SEND_MESSAGES",
+            "EMBED_LINKS",
+            "ATTACH_FILES"
+          ],
+          "allow": "Allow"
+        },
+        {
+          "name": "whitelist message",
+          "category": "Message",
+          "type": "Send Message",
+          "messageActionRows": [
+            {
+              "rowtype": "button"
+            }
+          ],
+          "channelname": "${tempVars.new_whitelist_channel.id}",
+          "messagetext": "Damit du auf die Whitelist gesetzt werden kannst, musst du in diesen Channel deinen Minecraft Namen schreiben.\nBitte beachte, dass die Whitelist manuel beabeitet wird, daher kann es bis zu 24 Stunden dauern, bis du Spielen kannst. Dies ist auch nur einmal nötig. Falls es vorkommen sollte, dass du nach 24 Stunden nicht auf der Whitelist bist und auch keine Antword von den Admins bekommen hast, dann erstelle bitte ein Ticket mit dem \"!ticket [hier dein Anliegen]\" command. Danke für dein Verständniss.",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
     }
   ]
 }
