@@ -930,8 +930,8 @@
           "id": "2bc243f4-1e35-4117-9dbf-22287926d28e"
         }
       ],
-      "x": 281,
-      "y": 825,
+      "x": 280,
+      "y": 822,
       "rtype": "Channel Action",
       "rsubtype": "Create Channel",
       "formdata": [
@@ -973,8 +973,8 @@
           "id": "912c3fd7-27c5-4d70-8f10-88522a277728"
         }
       ],
-      "x": 466,
-      "y": 824,
+      "x": 451,
+      "y": 830,
       "rtype": "Channel Action",
       "rsubtype": "Update Channel Permissions",
       "formdata": [
@@ -1045,6 +1045,8 @@
       "guid": "3e840139-e85c-453b-9438-91441c4a7adc",
       "reactionFields": [],
       "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
@@ -1057,13 +1059,13 @@
           "id": "c7e0d440-1fae-4f08-84e7-3a38b7e54b6d"
         }
       ],
-      "x": 805,
-      "y": 819,
+      "x": 816,
+      "y": 836,
       "rtype": "Message",
       "rsubtype": "Send Message",
       "formdata": [
         "${tempVars.new_ticket_channel.id}",
-        "Du hast ein Ticket erstellt. Bitte erkäre dein Problem so gut es geht, damit dein Problem schnellstmöglich gelöst werden kann.",
+        "Du hast ein Ticket erstellt. Bitte erkäre dein Problem so gut es geht, damit dein Problem schnellstmöglich gelöst werden kann.\n<@&1138540925228953652>",
         "",
         "temp"
       ],
@@ -1903,7 +1905,7 @@
           "id": "2bc243f4-1e35-4117-9dbf-22287926d28e"
         }
       ],
-      "x": 285,
+      "x": 286,
       "y": 996,
       "rtype": "Variable",
       "rsubtype": "Store Value in Variable",
@@ -1911,7 +1913,7 @@
         "get ricket reason",
         "Text",
         "temp",
-        "1+"
+        "0"
       ],
       "formnames": [
         "varname",
@@ -1940,8 +1942,8 @@
           "id": "2bc243f4-1e35-4117-9dbf-22287926d28e"
         }
       ],
-      "x": 278,
-      "y": 1181,
+      "x": 281,
+      "y": 1176,
       "rtype": "Message",
       "rsubtype": "Delete Message",
       "formdata": [
@@ -1961,6 +1963,8 @@
       "guid": "c012aed1-a4ff-4786-953c-258101e7737a",
       "reactionFields": [],
       "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
       "outputs": [
         {
           "label": "next response",
@@ -2003,6 +2007,230 @@
       "description": "get the active developer badge",
       "options": [],
       "ephemeral": true
+    },
+    {
+      "type": "command",
+      "name": "whitelist",
+      "guid": "e8578a39-c931-4e0a-99c2-079c9cc04402",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "14a319b0-b2a7-41f3-92bc-fd24e06e401d",
+            "73db33c0-e91d-4a62-838d-c7fa51cbca7d"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 57,
+      "y": 1483
+    },
+    {
+      "type": "response",
+      "name": "make whitelist channel",
+      "guid": "14a319b0-b2a7-41f3-92bc-fd24e06e401d",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "new_whitelist_channel",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "60e7c96d-9982-44b7-9226-128ef45afd80"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "e8578a39-c931-4e0a-99c2-079c9cc04402"
+        }
+      ],
+      "x": 279,
+      "y": 1465,
+      "rtype": "Channel Action",
+      "rsubtype": "Create Channel",
+      "formdata": [
+        "${dbsVars.CommandAuthor.displayName}",
+        "minecraft",
+        "${dbsVars.CommandAuthor.displayName} wants to be whitelisted ",
+        "Text",
+        "new_whitelist_channel",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "chancategory",
+        "reason",
+        "channeltype",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "make channel private_1",
+      "guid": "60e7c96d-9982-44b7-9226-128ef45afd80",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "7c6cd5db-6e44-4a1c-a902-f5f095c003fb"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "14a319b0-b2a7-41f3-92bc-fd24e06e401d"
+        }
+      ],
+      "x": 499,
+      "y": 1472,
+      "rtype": "Channel Action",
+      "rsubtype": "Update Channel Permissions",
+      "formdata": [
+        "${tempVars.new_whitelist_channel.id}",
+        "${dbsVars.guild.id}",
+        [
+          "VIEW_CHANNEL",
+          "SEND_MESSAGES"
+        ],
+        "Deny"
+      ],
+      "formnames": [
+        "channelName",
+        "permid",
+        "permissions",
+        "allow"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "give user perms_1",
+      "guid": "7c6cd5db-6e44-4a1c-a902-f5f095c003fb",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "b15e26e9-b4ab-45c9-a1d4-be1d62389503"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "60e7c96d-9982-44b7-9226-128ef45afd80"
+        }
+      ],
+      "x": 708,
+      "y": 1472,
+      "rtype": "Channel Action",
+      "rsubtype": "Update Channel Permissions",
+      "formdata": [
+        "${tempVars.new_whitelist_channel.id}",
+        "${dbsVars.CommandAuthor.id}",
+        [
+          "VIEW_CHANNEL",
+          "SEND_MESSAGES",
+          "EMBED_LINKS",
+          "ATTACH_FILES"
+        ],
+        "Allow"
+      ],
+      "formnames": [
+        "channelName",
+        "permid",
+        "permissions",
+        "allow"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "whitelist message",
+      "guid": "b15e26e9-b4ab-45c9-a1d4-be1d62389503",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "7c6cd5db-6e44-4a1c-a902-f5f095c003fb"
+        }
+      ],
+      "x": 926,
+      "y": 1468,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${tempVars.new_whitelist_channel.id}",
+        "Damit du auf die Whitelist gesetzt werden kannst, musst du in diesen Channel deinen Minecraft Namen schreiben.\nBitte beachte, dass die Whitelist manuel beabeitet wird, daher kann es bis zu 24 Stunden dauern, bis du Spielen kannst. Dies ist auch nur einmal nötig. Falls es vorkommen sollte, dass du nach 24 Stunden nicht auf der Whitelist bist und auch keine Antword von den Admins bekommen hast, dann erstelle bitte ein Ticket mit dem \"!ticket [hier dein Anliegen]\" command. Danke für dein Verständniss. <@&695329176575803453>",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [
+        {
+          "rowtype": "button"
+        }
+      ],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "delete !whitelist",
+      "guid": "73db33c0-e91d-4a62-838d-c7fa51cbca7d",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "e8578a39-c931-4e0a-99c2-079c9cc04402"
+        }
+      ],
+      "x": 270,
+      "y": 1691,
+      "rtype": "Message",
+      "rsubtype": "Delete Message",
+      "formdata": [
+        "${dbsVars.CommandMessage.id}",
+        "${dbsVars.CommandChannel.id}"
+      ],
+      "formnames": [
+        "varname",
+        "channelName"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
     }
   ]
 }
